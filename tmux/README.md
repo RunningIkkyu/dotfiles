@@ -15,26 +15,26 @@ To be upload. ⛄
 ## 🚀 Quick start
 
 <pre>
-- Send Prefix:                 <kbd>Alt</kbd>-<kbd>Q</kbd>
-- New tab:                  <kbd>Prefix</kbd>, <kbd>Space</kbd>
-- Go to tab 1~9:           <kbd>Alt</kbd>-<kbd>1</kbd>... <kbd>Alt</kbd>-<kbd>9</kbd>
-- Go to last tab:          <kbd>Prefix</kbd>, <kbd>Tab</kbd>
-- Go to left tab:            <kbd>Prefix</kbd>, <kbd>Alt</kbd>-<kbd>H</kbd>
-- Go to right tab:           <kbd>Prefix</kbd>, <kbd>Alt</kbd>-<kbd>L</kbd>
-- Rename tab:                  <kbd>Prefix</kbd>, <kbd>,</kbd>
-- Close tab:                   <kbd>Prefix</kbd>, <kbd>X</kbd>
-- Vertical Split:              <kbd>Prefix</kbd>, <kbd>|</kbd>
-- Horizontal Split:            <kbd>Prefix</kbd>, <kbd>-</kbd>
-- Go to left pane:       <kbd>Alt</kbd>-<kbd>H</kbd>
-- Go to right pane:      <kbd>Alt</kbd>-<kbd>L</kbd>
-- Go to up pane:         <kbd>Alt</kbd>-<kbd>K</kbd>
-- Go to down pane:       <kbd>Alt</kbd>-<kbd>J</kbd>
-- Resize Pane (horizontal): <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>H</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>L</kbd>
-- Resize Pane (vertical):   <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>J</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>K</kbd>
-- Toggle full screen of pane:  <kbd>Prefix</kbd>, <kbd>Space</kbd>
-- New window:  <kbd>Prefix</kbd>, <kbd>Ctrl</kbd>-<kbd>c</kbd>
-- Go to next window:  <kbd>Prefix</kbd>, <kbd>)</kbd>
-- Go to previous window:  <kbd>Prefix</kbd>, <kbd>(</kbd>
+- Send Prefix:                <kbd>Alt</kbd>-<kbd>Q</kbd>
+- New tab:                    <kbd>Prefix</kbd>, <kbd>Space</kbd>
+- Go to tab 1~9:              <kbd>Alt</kbd>-<kbd>1</kbd>... <kbd>Alt</kbd>-<kbd>9</kbd>
+- Go to last tab:             <kbd>Prefix</kbd>, <kbd>Tab</kbd>
+- Go to left tab:             <kbd>Prefix</kbd>, <kbd>Alt</kbd>-<kbd>H</kbd>
+- Go to right tab:            <kbd>Prefix</kbd>, <kbd>Alt</kbd>-<kbd>L</kbd>
+- Rename tab:                 <kbd>Prefix</kbd>, <kbd>,</kbd>
+- Close tab:                  <kbd>Prefix</kbd>, <kbd>X</kbd>
+- Vertical Split:             <kbd>Prefix</kbd>, <kbd>|</kbd>
+- Horizontal Split:           <kbd>Prefix</kbd>, <kbd>-</kbd>
+- Go to left pane:            <kbd>Alt</kbd>-<kbd>H</kbd>
+- Go to right pane:           <kbd>Alt</kbd>-<kbd>L</kbd>
+- Go to up pane:              <kbd>Alt</kbd>-<kbd>K</kbd>
+- Go to down pane:            <kbd>Alt</kbd>-<kbd>J</kbd>
+- Resize Pane (horizontal):   <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>H</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>L</kbd>
+- Resize Pane (vertical):     <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>J</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd>-<kbd>K</kbd>
+- Toggle full screen of pane: <kbd>Prefix</kbd>, <kbd>Space</kbd>
+- New window:                 <kbd>Prefix</kbd>, <kbd>Ctrl</kbd>-<kbd>c</kbd>
+- Go to next window:          <kbd>Prefix</kbd>, <kbd>)</kbd>
+- Go to previous window:      <kbd>Prefix</kbd>, <kbd>(</kbd>
 </pre>
 
 
