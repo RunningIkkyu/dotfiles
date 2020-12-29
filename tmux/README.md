@@ -14,6 +14,7 @@ To be upload. ⛄
 
 ## 🚀 Quick start
 
+<pre>
 - Send Prefix:                 <kbd>Alt</kbd> + <kbd>Q</kbd>
 - Vertical Split:              <kbd>Prefix</kbd>, <kbd>|</kbd>
 - Horizontal Split:            <kbd>Prefix</kbd>, <kbd>-</kbd>
@@ -25,6 +26,7 @@ To be upload. ⛄
 - Close tab:                   <kbd>Prefix</kbd>, <kbd>X</kbd>
 - Resize Windows (horizontal): <kbd>Prefix</kbd>, <kbd>Shift</kbd> + <kbd>H</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd> + <kbd>L</kbd>
 - Resize Windows (vertical):   <kbd>Prefix</kbd>, <kbd>Shift</kbd> + <kbd>J</kbd>  or  <kbd>Prefix</kbd>, <kbd>Shift</kbd> + <kbd>K</kbd>
+</pre>
 
 
 ## Installation
