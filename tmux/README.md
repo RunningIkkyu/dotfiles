@@ -35,6 +35,7 @@ To be upload. ⛄
 - New window:                 <kbd>Prefix</kbd>, <kbd>Ctrl</kbd>-<kbd>c</kbd>
 - Go to next window:          <kbd>Prefix</kbd>, <kbd>)</kbd>
 - Go to previous window:      <kbd>Prefix</kbd>, <kbd>(</kbd>
+- List windows:               <kbd>Prefix</kbd>, <kbd>w</kbd>   (use <kbd>j</kbd>/<kbd>k</kbd> to move, <kbd>x</kbd> to kill windows/tab, <kbd>Enter</kbd> to activate a window.
 </pre>
 
 
