@@ -2,7 +2,8 @@
 
 ## 📷 Screenshot
 
-To be upload. ⛄
+![screenshot](https://github.com/RunningIkkyu/dotfiles/blob/main/res/capture_tmux.PNG?raw=true)
+
 
 ## 🐧 Feature
 
