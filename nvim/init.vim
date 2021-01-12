@@ -114,6 +114,10 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 """""""""""""""""""""""" End Snipet plugin: ultisnips""""""""""""""""""""""""
 
+
+"" quick jump
+Plug 'roy2220/easyjump.tmux'
+
 " quick cscope
 ""Plug 'ronakg/quickr-cscope.vim'
 
