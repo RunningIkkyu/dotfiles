@@ -45,7 +45,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Switch between windows quickly.
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " colorscheme
 Plug 'morhetz/gruvbox'
@@ -108,7 +108,7 @@ Plug 'gyim/vim-boxdraw'
 
 """"""""""""""""""""""""Start Snipet plugin: ultisnips""""""""""""""""""""""""
 " Track the engine.
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
@@ -116,7 +116,7 @@ Plug 'honza/vim-snippets'
 
 
 "" quick jump
-Plug 'roy2220/easyjump.tmux'
+"Plug 'roy2220/easyjump.tmux'
 
 " quick cscope
 ""Plug 'ronakg/quickr-cscope.vim'
@@ -159,6 +159,7 @@ function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <buffer> <silent> K <Plug>(lcn-hover)
     nmap <buffer> <silent> gd <Plug>(lcn-definition)
+    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})
     nmap <buffer> <silent> gr <Plug>(lcn-references)
     nmap <buffer> <silent> ga <Plug>(lcn-code-action)
     nmap <buffer> <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
@@ -516,23 +517,34 @@ set signcolumn=yes
 nmap gn :bn<cr>
 nmap gp :bp<cr>
 nmap gw :bw<cr>
-" Rename variable
-" TODO: improve regex, only match the word not characters.
-map <F2> <Esc>:%s/<c-r><c-w>/<c-r><c-w>/g<Left><Left>
+
+" replace selected string
+vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
+" rename current word  <F3>
+map <F3> <Esc>:%s/\<<c-r><c-w>\>/<c-r><c-w>/g<Left><Left>
 " map ctrl-p to Fuzzy finder
 nmap <silent> <C-p> <Esc>:FZF<CR>
 nmap <silent> <C-M-p> <Esc>:Rg<CR>
 
-" Map // to search selection
+" map // to search selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-" Quick add quota to a word.
+" quick add quota to a word.
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" remove lines contain selected contents. <learder> d
+vnoremap <silent> <leader>d y:g/\V<C-R>=escape(@",'/\')<CR>/d<CR>
 " map F9 to search current word without moving cursor
 nnoremap <F9> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+" search words <learder> /
+nnoremap <leader>/ /\<\><left><left>
+" better navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" windows clipboard
 set clipboard+=unnamedplus
 let g:clipboard = {
           \   'name': 'win32yank-wsl',
