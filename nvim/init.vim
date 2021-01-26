@@ -159,7 +159,7 @@ function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <buffer> <silent> K <Plug>(lcn-hover)
     nmap <buffer> <silent> gd <Plug>(lcn-definition)
-    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})
+    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
     nmap <buffer> <silent> gr <Plug>(lcn-references)
     nmap <buffer> <silent> ga <Plug>(lcn-code-action)
     nmap <buffer> <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
@@ -536,6 +536,10 @@ vnoremap <silent> <leader>d y:g/\V<C-R>=escape(@",'/\')<CR>/d<CR>
 nnoremap <F9> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " search words <learder> /
 nnoremap <leader>/ /\<\><left><left>
+" quick next diffget
+nnoremap <silent> <leader>dg ]c:diffget<CR>
+" quick diffget
+nnoremap <silent> dg :diffget<CR>
 " better navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
