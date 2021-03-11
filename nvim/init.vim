@@ -159,7 +159,8 @@ function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <buffer> <silent> K <Plug>(lcn-hover)
     nmap <buffer> <silent> gd <Plug>(lcn-definition)
-    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd':'tabnew'}) <CR>
+    "nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
     nmap <buffer> <silent> gr <Plug>(lcn-references)
     nmap <buffer> <silent> ga <Plug>(lcn-code-action)
     nmap <buffer> <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
