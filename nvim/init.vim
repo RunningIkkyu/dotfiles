@@ -25,6 +25,9 @@ Plug 'AndrewRadev/linediff.vim'
 " vim goimports
 Plug 'mattn/vim-goimports'
 
+" vim current function info
+Plug 'tyru/current-func-info.vim'
+
 ""Language Client
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -93,6 +96,9 @@ Plug 'rust-lang/rust.vim'
 " Tagbar
 Plug 'majutsushi/tagbar'
 
+" better regex
+Plug 'othree/eregex.vim'
+
 " Vim surrond
 Plug 'tpope/vim-surround'
 
@@ -133,6 +139,15 @@ call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Current function info
+" Bind function to <ctrl-g>
+nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
+
+" show the current function name on statusline.
+ let &statusline .= ' [%{cfi#format("%s", "")}]'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" ale config 
 let g:ale_linters = {
 	\ 'go': ['gopls'],
@@ -159,8 +174,7 @@ function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <buffer> <silent> K <Plug>(lcn-hover)
     nmap <buffer> <silent> gd <Plug>(lcn-definition)
-    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd':'tabnew'}) <CR>
-    "nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
     nmap <buffer> <silent> gr <Plug>(lcn-references)
     nmap <buffer> <silent> ga <Plug>(lcn-code-action)
     nmap <buffer> <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
@@ -579,23 +593,3 @@ let g:clipboard = {
 let g:syntastic_rust_checkers = ['cargo']
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" center search result, same effect with nzz or Nzz
-function! CenteredFindNext(forward)
-    " save the current value for later restore
-    let s:so_curr=&scrolloff
-    set scrolloff=999
-    try
-        if a:forward
-            silent normal! n
-        else
-            silent normal! N
-        endif
-    finally
-        " restore no matter what
-        let &scrolloff=s:so_curr
-    endtry
-endfunction
-
-:nnoremap <silent>n :call CenteredFindNext(1)<CR>
-nnoremap <silent>N :call CenteredFindNext(0)<CR>
