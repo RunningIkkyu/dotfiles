@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git fzf vi-mod)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,13 +80,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -100,6 +93,23 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim="nvim"
+# If has nvim, set editor.
+if command -v nvim &> /dev/null; then
+    export EDITOR="nvim"
+    alias vim="nvim"
+    alias vi="nvim"
+else
+    export EDITOR="vim"
+fi
+
+# Tmux setting
 alias tm="tmux attach -t 0 || tmux"
+
+# Auto start miniconda.
 source /home/ikkyu/miniconda3/bin/activate
+
+# Git settings
+alias gs="git status"
+alias gm="git commit -m"
+alias gps="git push"
+alias gpl="git pull"
