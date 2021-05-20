@@ -531,7 +531,7 @@ set shell=/bin/bash
 set nu
 " relativenumber so slow when dealing with big files.
 "set relativenumber
-set no rnu
+set nornu
 set laststatus=2
 set expandtab       " Always use spaces instead of tabs.
 set tabstop=2       " Tab width after characters. 
@@ -591,19 +591,23 @@ cnoremap <M-f> <S-Right>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " windows clipboard
+" Download here: https://github.com/equalsraf/win32yank
 set clipboard+=unnamedplus
-let g:clipboard = {
-          \   'name': 'win32yank-wsl',
-          \   'copy': {
-          \      '+': 'win32yank.exe -i --crlf',
-          \      '*': 'win32yank.exe -i --crlf',
-          \    },
-          \   'paste': {
-          \      '+': 'win32yank.exe -o --lf',
-          \      '*': 'win32yank.exe -o --lf',
-          \   },
-          \   'cache_enabled': 0,
-          \ }
+
+"if has('win32')
+"    let g:clipboard = {
+"          \   'name': 'win32yank-wsl',
+"          \   'copy': {
+"          \      '+': 'win32yank.exe -i --crlf',
+"          \      '*': 'win32yank.exe -i --crlf',
+"          \    },
+"          \   'paste': {
+"          \      '+': 'win32yank.exe -o --lf',
+"          \      '*': 'win32yank.exe -o --lf',
+"          \   },
+"          \   'cache_enabled': 0,
+"          \ }
+"endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "rust config
