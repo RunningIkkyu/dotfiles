@@ -34,6 +34,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+"" vim mark, mark word with color.
+"Plug 'inkarkat/vim-mark'
 
 " Fuzzy finder.
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -83,6 +85,10 @@ Plug 'samoshkin/vim-mergetool'
 " rust plugin
 Plug 'rust-lang/rust.vim'
 
+
+" better regex
+Plug 'othree/eregex.vim'
+
 " vim-go
 "Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 
@@ -96,9 +102,6 @@ Plug 'rust-lang/rust.vim'
 " Tagbar
 Plug 'majutsushi/tagbar'
 
-" better regex
-Plug 'othree/eregex.vim'
-
 " Vim surrond
 Plug 'tpope/vim-surround'
 
@@ -106,6 +109,7 @@ Plug 'tpope/vim-surround'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 
+" Show vertical line for indent.
 Plug 'Yggdroot/indentLine'
 
 " Vim boxdraw, draw ascii graph
@@ -131,9 +135,13 @@ Plug 'honza/vim-snippets'
 " Plug 'davidhalter/jedi-vim'
 
 " Multiple selection
-"Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
+" Folding plugin
+Plug 'pseewald/vim-anyfold'
 
+" Scroll bar
+Plug 'Xuyuanp/scrollbar.nvim'
 
 call plug#end()
 
@@ -173,8 +181,9 @@ autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nmap <buffer> <silent> K <Plug>(lcn-hover)
+    "nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
     nmap <buffer> <silent> gd <Plug>(lcn-definition)
-    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+    nmap <buffer> <silent> gD :call LanguageClient#textDocument_definition({'gotoCmd': 'tabnew'})<CR>
     nmap <buffer> <silent> gr <Plug>(lcn-references)
     nmap <buffer> <silent> ga <Plug>(lcn-code-action)
     nmap <buffer> <silent> <leader>e :call LanguageClient#explainErrorAtPoint()<CR>
@@ -210,20 +219,17 @@ let g:LanguageClient_hideVirtualTextsOnInsert = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " config for multiple cursors
 "
-"
-"let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-"let g:multi_cursor_start_word_key      = '<C-m>'
-"let g:multi_cursor_select_all_word_key = '<A-m>'
-"let g:multi_cursor_start_key           = 'g<C-m>'
-"let g:multi_cursor_select_all_key      = 'g<A-m>'
-"let g:multi_cursor_next_key            = '<C-n>'
-"let g:multi_cursor_prev_key            = '<C-p>'
-"let g:multi_cursor_skip_key            = '<C-x>'
-"let g:multi_cursor_quit_key            = '<Esc>'
-"
-
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Langauge server Protocla Plugin: vim-lsp
@@ -259,10 +265,10 @@ nmap <leader>mt <plug>(MergetoolToggle)
 "        :MergetoolPreferLocal
 "        :MergetoolPreferRemote
 "
-nmap <expr> <C-M-h> &diff? '<Plug>(MergetoolDiffExchangeLeft)' : '<C-Left>'
-nmap <expr> <C-M-l> &diff? '<Plug>(MergetoolDiffExchangeRight)' : '<C-Right>'
-nmap <expr> <C-M-j> &diff? '<Plug>(MergetoolDiffExchangeDown)' : '<C-Down>'
-nmap <expr> <C-M-k> &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
+nmap <expr> <leader>mh &diff? '<Plug>(MergetoolDiffExchangeLeft)' : '<C-Left>'
+nmap <expr> <leader>mj &diff? '<Plug>(MergetoolDiffExchangeDown)' : '<C-Down>'
+nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
+nmap <expr> <leader>ml &diff? '<Plug>(MergetoolDiffExchangeRight)' : '<C-Right>'
 
 
 " View history revisions, and hide 'MERGED' file altogether
@@ -347,8 +353,8 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " nerdcommenter settings.
 " Use <ctrl-/> to toggle comments in code.
-nmap <C-_>   <Plug>NERDCommenterToggle
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+nmap <C-h>   <Plug>NERDCommenterToggle
+vmap <C-h>   <Plug>NERDCommenterToggle<CR>gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -386,7 +392,7 @@ let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 
 " map a specific key or shortcut to open NERDTree
 "map <C-n> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 
 
 " close vim if the only window left open is a NERDTree
@@ -488,11 +494,20 @@ let g:tagbar_autopreview=0
 " Needless for me.
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" scroll bar
+augroup ScrollbarInit
+    autocmd!
+    autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+    autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+    autocmd WinLeave,FocusLost             * silent! lua require('scrollbar').clear()
+augroup end
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme gruvbox
-"colorscheme gruvbox-material
+"colorscheme gruvbox
+colorscheme gruvbox-material
 "colorscheme oceanic_material
 "colorscheme nord
 
@@ -514,7 +529,9 @@ set updatetime=300
 set signcolumn=yes
 set shell=/bin/bash
 set nu
-set relativenumber
+" relativenumber so slow when dealing with big files.
+"set relativenumber
+set no rnu
 set laststatus=2
 set expandtab       " Always use spaces instead of tabs.
 set tabstop=2       " Tab width after characters. 
@@ -539,7 +556,7 @@ vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><L
 map <F3> <Esc>:%s/\<<c-r><c-w>\>/<c-r><c-w>/g<Left><Left>
 " map ctrl-p to Fuzzy finder
 nmap <silent> <C-p> <Esc>:FZF<CR>
-nmap <silent> <C-M-p> <Esc>:Rg<CR>
+nmap <silent> <M-p> <Esc>:Rg<CR>
 
 " map // to search selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
@@ -550,7 +567,7 @@ vnoremap <silent> <leader>d y:g/\V<C-R>=escape(@",'/\')<CR>/d<CR>
 " map F9 to search current word without moving cursor
 nnoremap <F9> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " search words <learder> /
-nnoremap <leader>/ /\<\><left><left>
+"nnoremap <leader>/ /\<\><left><left>
 " quick next diffget
 nnoremap <silent> <leader>dg ]c:diffget<CR>
 " quick diffget
@@ -593,3 +610,98 @@ let g:clipboard = {
 let g:syntastic_rust_checkers = ['cargo']
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" center search result, same effect with nzz or Nzz
+function! CenteredFindNext(forward)
+    " save the current value for later restore
+    let s:so_curr=&scrolloff
+    set scrolloff=999
+    try
+        if a:forward
+            silent normal! n
+        else
+            silent normal! N
+        endif
+    finally
+        " restore no matter what
+        let &scrolloff=s:so_curr
+    endtry
+endfunction
+
+:nnoremap <silent>n :call CenteredFindNext(1)<CR>
+nnoremap <silent>N :call CenteredFindNext(0)<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+function! FoldSearchPattern() abort
+    if !exists('w:foldpatterns')
+        let w:foldpatterns=[]
+        setlocal foldmethod=expr foldlevel=0 foldcolumn=2
+    endif
+    if index(w:foldpatterns, @/) == -1
+        call add(w:foldpatterns, @/)
+        setlocal foldexpr=SetFolds(v:lnum)
+    endif
+endfunction
+
+function! SetFolds(lnum) abort
+    for pattern in w:foldpatterns
+        if getline(a:lnum) =~ pattern
+            if getline(a:lnum + 1) !~ pattern
+                return 's1'
+            else
+                return 1
+            endif
+        endif
+    endfor
+endfunction
+
+nnoremap \z :call FoldSearchPattern()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+"vim folding
+
+" Open these two line if you want this uncomplete indent.
+"setlocal foldmethod=expr
+"setlocal foldexpr=GetPotionFold(v:lnum)
+
+
+" Return indent level of the given line.
+function! IndentLevel(lnum)
+    return indent(a:lnum) / &shiftwidth
+endfunction
+
+" Return next non blan line
+function! NextNonBlankLine(lnum)
+    let numlines = line('$')
+    let current = a:lnum + 1
+
+    while current <= numlines
+        if getline(current) =~? '\v\S'
+            return current
+        endif
+
+        let current += 1
+    endwhile
+
+    return -2
+endfunction
+
+
+function! GetPotionFold(lnum)
+    if getline(a:lnum) =~? '\v^\s*$'
+        return '-1'
+    endif
+
+    let this_indent = IndentLevel(a:lnum)
+    let next_indent = IndentLevel(NextNonBlankLine(a:lnum))
+
+    if next_indent == this_indent
+        return this_indent
+    elseif next_indent < this_indent
+        return this_indent
+    elseif next_indent > this_indent
+        return '>' . next_indent
+    endif
+endfunction
