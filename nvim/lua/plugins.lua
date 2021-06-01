@@ -23,7 +23,7 @@ return require('packer').startup(function()
   -- completion-nvim is an auto completion framework that aims to provide a
   -- better completion experience with neovim's built-in LSP. Other LSP
   -- functionality is not supported.
-  -- use {
+ -- use {
   --   'nvim-lua/completion-nvim',
   --   opt = true,
   --   requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
@@ -134,7 +134,7 @@ return require('packer').startup(function()
     'lukas-reineke/indent-blankline.nvim',
     branch = 'lua',
   }
-  use 'yamatsum/nvim-cursorline'
+  -- use 'yamatsum/nvim-cursorline'
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -155,6 +155,46 @@ return require('packer').startup(function()
   -- install language server automatically.
   use 'kabouzeid/nvim-lspinstall'
 
+  -- quick hightlight works
+  use 't9md/vim-quickhl'
 
+  -- controll nvim terminal better.
+  use {"akinsho/nvim-toggleterm.lua"}
+
+  -- show cursor position
+  use 'edluffy/specs.nvim'
+
+  -- line diff
+  use 'AndrewRadev/linediff.vim'
+
+  -- vim merge tools
+  use 'samoshkin/vim-mergetool'
+
+  -- Better regex
+  use 'othree/eregex.vim'
+
+  --use 'Xuyuanp/scrollbar.nvim'
+
+  -- An eye friendly plugin that fades your inactive buffers and preserves your
+  -- syntax highlighting!
+  use 'TaDaa/vimade'
+
+  -- open selected region in a split windows.
+  use 'chrisbra/NrrwRgn'
+
+  -- scrollbar
+  use 'dstein64/nvim-scrollview'
+
+  -- rainbow
+  use 'p00f/nvim-ts-rainbow'
+
+  -- git diff
+  use 'sindrets/diffview.nvim'
+
+  -- show nvim register
+  use "tversteeg/registers.nvim"
+
+  -- hightlinght search length
+  use {'kevinhwang91/nvim-hlslens'}
 end)
 -------------------------------------------------------------------------------
