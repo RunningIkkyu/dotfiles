@@ -1,110 +1,57 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
--- vim.cmd [[packadd packer.nvim]]
--- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
--- vim._update_package_paths()
-
 -------------------------------------------------------------------------------
 return require('packer').startup(function()
-  -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Simple plugins can be specified as strings
-  use '9mm/vim-closer'
-
-  -- Lazy loading:
-  -- Load on specific commands
-  use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
-
-  -- Load on an autocommand event
-  use {'andymass/vim-matchup', event = 'VimEnter'}
-
-  -- completion-nvim is an auto completion framework that aims to provide a
-  -- better completion experience with neovim's built-in LSP. Other LSP
-  -- functionality is not supported.
- -- use {
-  --   'nvim-lua/completion-nvim',
-  --   opt = true,
-  --   requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-  -- }
-  use 'nvim-lua/completion-nvim'
-  use 'hrsh7th/vim-vsnip'
+  ------------------------- Lsp related --------------------------------------
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  --use 'nvim-lua/completion-nvim'
+  use "hrsh7th/nvim-compe"
   use 'hrsh7th/vim-vsnip-integ'
+  use "rafamadriz/friendly-snippets"
+  use "hrsh7th/vim-vsnip"
+  use 'neovim/nvim-lspconfig'
+  use 'glepnir/lspsaga.nvim'      -- better lsp UI
+  use 'folke/lsp-colors.nvim'     -- lsp color
+  use 'ray-x/lsp_signature.nvim'  -- Show function signature
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'kabouzeid/nvim-lspinstall' -- install language server automatically.
+  use 'ojroques/nvim-bufdel'      -- better buffer delection
 
-  -- Local plugins can be included
-  -- use '~/projects/personal/hover.nvim'
 
-  -- Plugins can have post-install/update hooks
-  -- use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-
-  -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-  -- Post-install/update hook with call of vimscript function with argument
-  -- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
-
-  -- Use specific branch, dependency and run lua file after load
-  -- use {
-  --  'glepnir/galaxyline.nvim',
-  --   branch = 'main',
-  --   -- your statusline
-  --   config = function() require'my_statusline' end,
-  --   -- some optional icons
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  -- }
-  
-  -- This is a Neovim plugin/library for generating statusline components from
-  -- the built-in LSP client. 
-  -- not working
-  -- use 'nvim-lua/lsp-status.nvim'
-
-  -- use {
-	-- 	  'vim-airline/vim-airline',
-	-- 	   requires = {'vim-airline/vim-airline-themes' }
-  -- }
-
+  ------------------------- Tools & Improvements -----------------------------
+  use "windwp/nvim-autopairs"
+  use {'andymass/vim-matchup', event = 'VimEnter'} -- better matchup
+  use 'onsails/lspkind-nvim'          -- vscode-like pictograms
+  use 'tpope/vim-fugitive'
+  use "lewis6991/gitsigns.nvim"
+  use 'kyazdani42/nvim-tree.lua'
   use 'sheerun/vim-polyglot'
   use 'gyim/vim-boxdraw'
-
-  -- Quick comment
-  use 'preservim/nerdcommenter'
-
-  -- Bring smooth scrolling to vim.
-  -- use 'yuttie/comfortable-motion.vim'
-  use 'karb94/neoscroll.nvim'
-
-  -- Vim surrond
-  use 'tpope/vim-surround'
-  
-  -- Multiple cursor
-  use 'terryma/vim-multiple-cursors'
-
-  use {
-    'junegunn/fzf',
-    requires = {'junegunn/fzf.vim'}
-  }
-
-  use 'neovim/nvim-lspconfig'
-  -- A light-weight lsp plugin based on neovim built-in lsp with highly a performant UI.
-  use 'glepnir/lspsaga.nvim'
-
-  -- lsp color
-  use 'folke/lsp-colors.nvim'
+  -- use 'yuttie/comfortable-motion.vim'  -- smooth scrolling
+  use 'preservim/nerdcommenter'       -- Quick comment
+  use 'tpope/vim-surround'            -- Vim surrond
+  use 'terryma/vim-multiple-cursors'  -- Multiple cursor
+  use {'junegunn/fzf', requires = {'junegunn/fzf.vim'}}
+  use 'liuchengxu/vista.vim'          -- View and search LSP symbols, tags.
+  use 't9md/vim-quickhl'              -- quick hightlight works
+  use 'akinsho/nvim-toggleterm.lua'   -- controll nvim terminal better.
+  use 'AndrewRadev/linediff.vim'      -- line diff
+  use 'samoshkin/vim-mergetool'       -- vim merge tools
+  -- use 'othree/eregex.vim'             -- Better regex
+  -- use 'TaDaa/vimade'                  -- fades your inactive buffers..
+  use 'chrisbra/NrrwRgn'              -- open selected region in a split windows.
+  use 'dstein64/nvim-scrollview'      -- scrollbar, use nvim popup
+  use 'sindrets/diffview.nvim'        -- git diff
+  use "tversteeg/registers.nvim"      -- show nvim register
+  use {'kevinhwang91/nvim-hlslens'}   -- hightlinght search length
+  use 'wfxr/minimap.vim'              -- nvim minimap
+  use "folke/which-key.nvim"          -- show which key
+  use "kdav5758/TrueZen.nvim"         -- forcus, minimize
 
 
-  -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp:
-  use 'onsails/lspkind-nvim'
-
-  -- Show function signature when you types
-  use {
-    "ray-x/lsp_signature.nvim",
-  }
-
-  -- VSCode bulb for neovim's built-in LSP.
-  use 'kosayoda/nvim-lightbulb'
-
-
+  ---------------------------- Apperance -------------------------------------
   -- Colorscheme
   use 'morhetz/gruvbox'
   use 'sainnhe/gruvbox-material'
@@ -112,89 +59,20 @@ return require('packer').startup(function()
   use 'arcticicestudio/nord-vim'
   use 'mhartington/oceanic-next'
 
-  -- A plugin to configure Neovim LSP using json files like coc-settings.json.
-  -- tamago324/nlsp-settings.nvim
-
-  -- View and search LSP symbols, tags.
-  use 'liuchengxu/vista.vim'
-
-  -- Tabs, as understood by any other editor.
-  use 'romgrk/barbar.nvim'
+  -- Others
+  use 'kosayoda/nvim-lightbulb'       -- VSCode bulb for neovim's built-in LSP.
+  -- use 'romgrk/barbar.nvim'         -- Tabs, as understood by any other editor.
+  use "akinsho/nvim-bufferline.lua"   -- top buffer, tabs.
+  use 'karb94/neoscroll.nvim'         -- smooth scrolling
   use 'kyazdani42/nvim-web-devicons'
-
-  -- a highly extendable fuzzy finder over lists. Built on the latest awesome
-  -- features from neovim core.
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
-
-  -- indent line
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    branch = 'lua',
-  }
-  -- use 'yamatsum/nvim-cursorline'
-
-  use {
-    'kyazdani42/nvim-tree.lua',
-  }
-
-  use {
-    'tpope/vim-fugitive',
-  }
-
-  -- A blazing fast and easy to configure neovim statusline written in pure
-  -- lua.
-  --
-  use {
-    'hoob3rt/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-
-  -- install language server automatically.
-  use 'kabouzeid/nvim-lspinstall'
-
-  -- quick hightlight works
-  use 't9md/vim-quickhl'
-
-  -- controll nvim terminal better.
-  use {"akinsho/nvim-toggleterm.lua"}
-
-  -- show cursor position
-  use 'edluffy/specs.nvim'
-
-  -- line diff
-  use 'AndrewRadev/linediff.vim'
-
-  -- vim merge tools
-  use 'samoshkin/vim-mergetool'
-
-  -- Better regex
-  use 'othree/eregex.vim'
-
-  --use 'Xuyuanp/scrollbar.nvim'
-
-  -- An eye friendly plugin that fades your inactive buffers and preserves your
-  -- syntax highlighting!
-  use 'TaDaa/vimade'
-
-  -- open selected region in a split windows.
-  use 'chrisbra/NrrwRgn'
-
-  -- scrollbar
-  use 'dstein64/nvim-scrollview'
-
-  -- rainbow
-  use 'p00f/nvim-ts-rainbow'
-
-  -- git diff
-  use 'sindrets/diffview.nvim'
-
-  -- show nvim register
-  use "tversteeg/registers.nvim"
-
-  -- hightlinght search length
-  use {'kevinhwang91/nvim-hlslens'}
+  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua',}   -- indent line
+  -- use 'yamatsum/nvim-cursorline'   -- ruler, performance bad
+  -- use 'edluffy/specs.nvim'         -- show cursor position, performance bad
+  use 'p00f/nvim-ts-rainbow'          -- rainbow
+  
+  use "glepnir/galaxyline.nvim"       -- statusline. 
+  -- use 'hoob3rt/lualine.nvim',
+  -- use 'nvim-lua/lsp-status.nvim'
+  -- use { 'vim-airline/vim-airline', requires = {'vim-airline/vim-airline-themes' }}
 end)
 -------------------------------------------------------------------------------

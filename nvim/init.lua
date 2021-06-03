@@ -1,139 +1,64 @@
-require('plugins')
+---------------------------- Load all plugins ---------------------------------
+-- load all plugins
+require "plugins"
+-- require "pluginList"
+require "misc-utils"
+require "top-bufferline"
+require "statusline"
+
+-- require("colorizer").setup()
+require('neoscroll').setup() -- smooth scrolling.
+
+-- lsp stuff
+require "nvim-lspconfig"
+require "compe-completion"
+
+require "treesitter-nvim"
+require "mappings"
+
+require "telescope-nvim"
+require "nvimTree" -- file tree stuff
+require "file-icons"
+require'lspinstall'.setup() -- important
+
+require "gitsigns-nvim"   --  git signs , lsp symbols etc
+require("nvim-autopairs").setup()
+require("lspkind").init()
+require "whichkey"
+
+-- hide line numbers in terminal windows
+vim.api.nvim_exec([[
+   au BufEnter term://* setlocal nonumber
+]], false)
 
 -- https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/configs/neovim/init.lua
 
-
---Expand tab to spaces
-vim.o.expandtab = true
-
---Incremental live completion
-vim.o.inccommand = "nosplit"
-
---Set tab options for vim
-vim.o.tabstop = 8
-vim.o.softtabstop = 4
-
---Set highlight on search
-vim.o.hlsearch = true
-
---Make line numbers default
-vim.wo.number = true
-
---Do not save when switching buffers
-vim.o.hidden = true
-
---Enable mouse mode
-vim.o.mouse = "a"
-
---Enable break indent
-vim.o.breakindent = true
-
+-- g.mapleader = " "
+-- g.auto_save = 0
+--
 --Save undo history
-vim.cmd[[ set undofile ]]
+-- vim.cmd[[ set undofile ]]
 
---Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
 
---Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn="yes"
+vim.cmd "syntax on"
+-- local base16 = require "base16"
+-- base16(base16.themes["onedark"], true)
 
---Better navigation
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+require "custom_highlights"
 
--- quick diffget
-vim.api.nvim_set_keymap('n', '<leader>dg', ':diffget', {noremap = true})
+-- blankline
+vim.g.indentLine_enabled = 1
+vim.g.indent_blankline_filetype_exclude = {"help", "terminal"}
+vim.g.indent_blankline_buftype_exclude = {"terminal"}
+vim.g.indent_blankline_show_trailing_blankline_indent = false
+vim.g.indent_blankline_show_first_indent_level = false
 
-vim.api.nvim_set_keymap('n', '<C-p>', ':FZF<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<M-p>', ':Rg<CR>', {noremap = true})
-
--- Map F9 to search current word without moving cursor
--- nnoremap <F9> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-
--- map // to search selection
--- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
--- Command line mode binding.
--- See :help cmdline-editing for more details.
--- vim.api.nvim_set_keymap('c', '<C-l>', '<C-w>l', {noremap = true})
-
---Remap escape*2 to leave terminal mode
-vim.api.nvim_exec([[
-  augroup Terminal
-    autocmd!
-    au TermOpen * tnoremap <buffer> <Esc><Esc> <c-\><c-n>
-    au TermOpen * set nonu
-  augroup end
-]], false)
-
---Add map to enter paste mode
-vim.o.pastetoggle="<F3>"
-
---Remap space as leader key
--- vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-vim.cmd[[colorscheme gruvbox-material]]
-
--------------------------------------------------------------------------------
--- lspconfig
--- Supported Language server List:  
---    https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
--- golang
-local lsp = require 'lspconfig'
-local completion = require 'completion'
-lsp.gopls.setup{on_attach=completion.on_attach}
--- require'completion'.on_attach()
-
--- python
--- require'lspconfig'.pyright.setup{}
-
--------------------------------------------------------------------------------
--- Load lspsaga and setting.
--- A light-weight lsp plugin based on neovim built-in lsp with highly a performant UI.
-local saga = require 'lspsaga'
-saga.init_lsp_saga()
-vim.api.nvim_set_keymap('n', 'gh', ':Lspsaga lsp_finder<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', 'ga', ':Lspsaga code_action<CR>', {noremap=true})    -- better preview using lspsaga
-vim.api.nvim_set_keymap('n', '<leader>gr', ':Lspsaga rename<CR>', {noremap=true})    -- better preview using lspsaga
-vim.api.nvim_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', {noremap=true})    -- better preview using lspsaga
--- preview definition
-vim.api.nvim_set_keymap('n', 'gD', ':Lspsaga preview_definition<CR>', {noremap=true}) 
-
--------------------------------------------------------------------------------
--- local nvim_lsp = require('lspconfig')
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
-vim.api.nvim_set_keymap('n', 'gr', ':Telescope lsp_references<CR>', opts)
--- vim.api.nvim_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
--- vim.api.nvim_set_keymap('n', 'K', ':lua vim.lsp.buf.hover()<CR>', {})
-vim.api.nvim_set_keymap('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-k>', ':lua vim.lsp.buf.signature_help()<CR>', opts)
--- vim.api.nvim_set_keymap('n', 'ga', ':lua vim.lsp.buf.code_action()<CR>', opts)
-vim.api.nvim_set_keymap('n', 'geN', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', 'gen', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
--------------------------------------------------------------------------------
---Nvim tree
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap("n", "<space>t", "<cmd>:NvimTreeToggle<CR>", opts)
-
-
--------------------------------------------------------------------------------
-require("lsp-colors").setup()
-
-
--------------------------------------------------------------------------------
-require('lspkind').init()
+--vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme nord]]
 
 -------------------------------------------------------------------------------
 cfg = {
@@ -147,7 +72,7 @@ cfg = {
   hint_enable = true, -- virtual hint enable
   hint_prefix = " ",  -- Panda for parameter
   hint_scheme = "String",
-  use_lspsaga = true,  -- set to true if you want to use lspsaga popup
+  -- use_lspsaga = true,  -- set to true if you want to use lspsaga popup
   handler_opts = {
     border = "shadow"   -- double, single, shadow, none
   },
@@ -158,21 +83,10 @@ cfg = {
 }
 
 require'lsp_signature'.on_attach(cfg)
--------------------------------------------------------------------------------
--- completion ultisnips
---let g:completion_enable_snippet = 'UltiSnips'
---
--- lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
---
-
-vim.api.nvim_command('set completeopt=menuone,noinsert,noselect')
--- vim.api.nvim_command('set shortmess+=c')
-
 
 -------------------------------------------------------------------------------
 --nvim-lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-
 
 -------------------------------------------------------------------------------
 -- treesitter
@@ -188,35 +102,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
--------------------------------------------------------------------------------
---bufferline
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap("n", "<M-,>", ":BufferPrevious<CR>", opts)
-vim.api.nvim_set_keymap("n", "<M-.>", ":BufferNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<M-;>", ":BufferPick<CR>", opts)
-vim.api.nvim_set_keymap("n", "<M-d>", ":BufferClose<CR>", opts)
-
--------------------------------------------------------------------------------
--- Telescope
-vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep <CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope lsp_definitions<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fc", ":Telescope current_buffer_fuzzy_find <CR>", opts)
-
--------------------------------------------------------------------------------
---neoscroll: smooth scrolling.
-require('neoscroll').setup()
-
-
--------------------------------------------------------------------------------
--- lualine
-require('lualine').setup{
-  options = {theme = 'gruvbox'},
-}
-
-
--------------------------------------------------------------------------------
-require'lspinstall'.setup() -- important
 
 -------------------------------------------------------------------------------
 --
@@ -229,48 +114,14 @@ require("toggleterm").setup{
    --direction = 'vertical' | 'horizontal' | 'window' | 'float',
    direction = 'horizontal',
    hide_numbers = true,
-   start_in_insert = true,
+   start_in_insert = false,
    open_mapping = [[<c-\>]],
-   persist_size = true,
+   --persist_size = true,
    close_on_exit = false,
+   shade_terminals=true,
+   height = 30,
+   shell=vim.o.shell
 }
--- require("toggleterm").setup{
---   -- size can be a number or function which is passed the current terminal
---   size = 20 | function(term)
---     if term.direction == "horizontal" then
---       return 15
---     elseif term.direction == "vertical" then
---       return vim.o.columns * 0.4
---     end
---   end,
---   open_mapping = [[<c-\>]],
---   hide_numbers = true, -- hide the number column in toggleterm buffers
---   shade_filetypes = {},
---   shade_terminals = true,
---   shading_factor = '<number>', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
---   start_in_insert = true,
---   persist_size = true,
---   direction = 'vertical' | 'horizontal' | 'window' | 'float',
---   close_on_exit = true, -- close the terminal window when the process exits
---   shell = vim.o.shell, -- change the default shell
---   -- This field is only relevant if direction is set to 'float'
---   float_opts = {
---     -- The border key is *almost* the same as 'nvim_win_open'
---     -- see :h nvim_win_open for details on borders however
---     -- the 'curved' border is a custom border type
---     -- not natively supported but implemented in this plugin.
---     -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
---     border = 'single',
---     -- width = <value>,
---     height = 30,
---     winblend = 3,
---     highlights = {
---       border = "Normal",
---       background = "Normal",
---     }
---   }
--- }
--- 
 
 -------------------------------------------------------------------------------
 -- https://github.com/edluffy/specs.nvim
@@ -297,16 +148,7 @@ require("toggleterm").setup{
 -------------------------------------------------------------------------------
 -- indent line
 vim.g.indent_blankline_char = '│'
-
--------------------------------------------------------------------------------
--- rainbow
-require'nvim-treesitter.configs'.setup {
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-    max_file_lines = 2000, -- Do not enable for files with more than 1000 lines, int
-  }
-}
+vim.g.indent_blankline_char = "▏"
 
 -------------------------------------------------------------------------------
 -- Lua
@@ -342,3 +184,5 @@ require'diffview'.setup {
     }
   }
 }
+
+-------------------------------------------------------------------------------
