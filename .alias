@@ -1,0 +1,8 @@
+alias vim="nvim"
+alias vi="nvim"
+alias gm="git commit -m "
+alias ga="git add"
+alias gs="git status"
+alias gps="git push"
+alias gpl="git pull"
+alias tmux="tmux attach -t 0 || tmux"
