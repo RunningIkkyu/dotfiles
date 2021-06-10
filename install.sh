@@ -6,8 +6,8 @@ ln -s $PWD/nvim/ $HOME/.config/nvim
 cp ./.alias $HOME/
 cp ./.exports $HOME/
 
-echo "sh $HOME/.alias" >> $HOME/.zshrc
-echo "sh $HOME/.exports" >> $HOME/.zshrc
+echo "source $HOME/.alias" >> $HOME/.zshrc
+echo "source $HOME/.exports" >> $HOME/.zshrc
 
 #./bootstrap.sh
 
