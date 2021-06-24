@@ -93,14 +93,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-
-# =========================== Alias ==========================================
-# Git
-alias gs="git status"
-alias gm="git commit -m"
-alias gps="git push"
-alias gpl="git pull"
 # Tmux setting
 alias tm="tmux attach -t 0 || tmux"
 
@@ -113,9 +105,11 @@ else
     export EDITOR="vim"
 fi
 
+echo "source $HOME/.alias" >> $HOME/.zshrc
+echo "source $HOME/.exports" >> $HOME/.zshrc
 # ======================== Path Environment variable ========================
-export PATH=$PATH:/home/ikkyu/var/go/bin
+#export PATH=$PATH:/home/ikkyu/var/go/bin
 
 # ============================= Scripts =====================================
 # Auto start miniconda.
-source /home/ikkyu/miniconda3/bin/activate
+#source /home/ikkyu/miniconda3/bin/activate
