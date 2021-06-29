@@ -79,3 +79,5 @@ call plug#begin('~/.vim/plugged') " Code completion.
 
 call plug#end()
 
+let g:plug_timeout=120
+let g:plug_threads=8
