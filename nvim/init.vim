@@ -98,7 +98,7 @@ set nu
 set rnu
 set laststatus=2
 set expandtab       " Always use spaces instead of tabs.
-set tabstop=2       " Tab width after characters. 
+set tabstop=4       " Tab width after characters. 
 set shiftwidth=4    " Tab stop before characters.
 set encoding=UTF-8
 
@@ -143,7 +143,7 @@ set clipboard+=unnamedplus
 colorscheme gruvbox
 
 
-" ===============================  Nvim-tree ====================
+" ===============================  Nvimtree ====================
 "
 
 lua <<EOF
@@ -153,7 +153,7 @@ local g = vim.g
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
-g.nvim_tree_width = 26
+g.nvim_tree_width = '30%'
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 0
@@ -171,77 +171,11 @@ g.nvim_tree_show_icons = {
     folders = 1,
     files = 1
 }
+vim.g.mapleader = " "
 
-g.nvim_tree_icons = {
-    default = " ",
-    symlink = " ",
-    git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★",
-        deleted = "",
-        ignored = "◌"
-    },
-    folder = {
-        default = "",
-        open = "",
-        symlink = "",
-        empty = "",
-        empty_open = "",
-        symlink_open = ""
-    }
-}
--- Mappings for nvimtree
-
-vim.api.nvim_set_keymap(
-    "n",
-    "<space>n",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
-)
-
-local tree_cb = require "nvim-tree.config".nvim_tree_callback
-
-g.nvim_tree_bindings = {
-    ["u"] = ":lua require'some_module'.some_function()<cr>",
-    -- default mappings
-    ["<CR>"] = tree_cb("edit"),
-    ["o"] = tree_cb("edit"),
-    ["<2-LeftMouse>"] = tree_cb("edit"),
-    ["<2-RightMouse>"] = tree_cb("cd"),
-    ["<C-]>"] = tree_cb("cd"),
-    ["<C-v>"] = tree_cb("vsplit"),
-    ["<C-x>"] = tree_cb("split"),
-    ["<C-t>"] = tree_cb("tabnew"),
-    ["<"] = tree_cb("prev_sibling"),
-    [">"] = tree_cb("next_sibling"),
-    ["<BS>"] = tree_cb("close_node"),
-    ["<S-CR>"] = tree_cb("close_node"),
-    ["<Tab>"] = tree_cb("preview"),
-    ["I"] = tree_cb("toggle_ignored"),
-    ["H"] = tree_cb("toggle_dotfiles"),
-    ["R"] = tree_cb("refresh"),
-    ["a"] = tree_cb("create"),
-    ["d"] = tree_cb("remove"),
-    ["r"] = tree_cb("rename"),
-    ["<C-r>"] = tree_cb("full_rename"),
-    ["x"] = tree_cb("cut"),
-    ["c"] = tree_cb("copy"),
-    ["p"] = tree_cb("paste"),
-    ["y"] = tree_cb("copy_name"),
-    ["Y"] = tree_cb("copy_path"),
-    ["gy"] = tree_cb("copy_absolute_path"),
-    ["[c"] = tree_cb("prev_git_item"),
-    ["]c"] = tree_cb("next_git_item"),
-    ["-"] = tree_cb("dir_up"),
-    ["q"] = tree_cb("close")
-}
 EOF
+
+nnoremap <leader>n :NvimTreeToggle<CR>
 
 
 " ================================== Terminal mode ======================
@@ -483,61 +417,7 @@ EOF
 
 " ========================== Telescope ==============================
 lua <<EOF
-require("telescope").setup {
-    defaults = {
-        vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case"
-        },
-        prompt_position = "bottom",
-        prompt_prefix = " ",
-        selection_caret = " ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
-        sorting_strategy = "descending",
-        layout_strategy = "horizontal",
-        layout_defaults = {
-            horizontal = {
-                mirror = false,
-                preview_width = 0.5
-            },
-            vertical = {
-                mirror = false
-            }
-        },
-        file_sorter = require "telescope.sorters".get_fuzzy_file,
-        file_ignore_patterns = {},
-        generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-        shorten_path = true,
-        winblend = 0,
-        width = 0.75,
-        preview_cutoff = 120,
-        results_height = 1,
-        results_width = 0.8,
-        border = {},
-        borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-        color_devicons = true,
-        use_less = true,
-        set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-        file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-        grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-        qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
-    }
-    -- extensions = {
-    --     media_files = {
-    --         filetypes = {"png", "webp", "jpg", "jpeg"},
-    --         find_cmd = "rg" -- find command (defaults to `fd`)
-    --     }
-    -- }
-}
+require("telescope").setup {}
 
 -- require("telescope").load_extension("media_files")
 
@@ -548,13 +428,6 @@ vim.api.nvim_set_keymap( "n", "<leader>ff", ":Telescope find_files <CR>", {norem
 vim.api.nvim_set_keymap( "n", "<leader>gr", ":Telescope lsp_references <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap( "n", "<leader>fc", ":Telescope current_buffer_fuzzy_find <CR>", {noremap = true, silent = true})
 -- vim.g.mapleader = " "
-
--- mappings
--- vim.api.nvim_set_keymap('n', 'gr', ':Telescope lsp_references<CR>', opts)
--- vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep <CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope lsp_definitions<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>fc", ":Telescope current_buffer_fuzzy_find <CR>", opts)
 
 EOF
 
