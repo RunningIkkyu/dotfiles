@@ -94,7 +94,6 @@ set termguicolors
 set clipboard+=unnamedplus
 set updatetime=300
 set signcolumn=yes
-set shell=/bin/bash
 set nu
 set rnu
 set laststatus=2
