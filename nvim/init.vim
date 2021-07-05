@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
   Plug 'ap/vim-css-color'              "Preview colors
   Plug 'junegunn/vim-easy-align'       "Easy align
+  Plug 'phaazon/hop.nvim'              "Easy motion for neovim
+
 
 
   "---------------------------- Apperance -------------------------------------
@@ -70,7 +72,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   "Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
   Plug 'akinsho/nvim-bufferline.lua'   "top buffer, tabs.
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+  Plug 'lukas-reineke/indent-blankline.nvim'
   "Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
   "Plug 'edluffy/specs.nvim'           "show cursor position, performance bad
   Plug 'p00f/nvim-ts-rainbow'          "rainbow
@@ -640,3 +642,8 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" =============================== hop.nvim =================================
+lua require'hop'.setup()
+nnoremap <C-i> :HopChar1<CR>
+nnoremap <M-i> :HopChar2<CR>
