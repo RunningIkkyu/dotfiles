@@ -49,7 +49,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'dstein64/nvim-scrollview'      "scrollbar, use nvim popup
   Plug 'sindrets/diffview.nvim'        "git diff
   Plug 'tversteeg/registers.nvim'      "show nvim register
-  Plug 'kevinhwang91/nvim-hlslens'     "hightlinght search length
+  "Plug 'kevinhwang91/nvim-hlslens'     "hightlinght search length
   "Plug 'wfxr/minimap.vim'              "nvim minimap
   Plug 'folke/which-key.nvim'          "show which key
   Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
@@ -103,6 +103,8 @@ set expandtab       " Always use spaces instead of tabs.
 set tabstop=4       " Tab width after characters. 
 set shiftwidth=4    " Tab stop before characters.
 set encoding=UTF-8
+set ignorecase
+set smartcase
 
 " replace selected string
 vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
