@@ -156,8 +156,8 @@ unbind C-b
 #bind C-b send-prefix
 
 # move status line to top
-#set -g status-position bottom
-set -g status-position top
+set -g status-position bottom
+#set -g status-position top
 
 unbind C-a
 unbind C-j
