@@ -96,6 +96,7 @@ set termguicolors
 set clipboard+=unnamedplus
 set updatetime=300
 set signcolumn=yes
+set inccommand=nosplit       "increase command
 set nu
 set rnu
 set laststatus=2
@@ -146,7 +147,34 @@ set clipboard+=unnamedplus
 
 colorscheme gruvbox
 
+"use [[ / ]] to goto previous/next function
+lua <<EOF
+function search_function_previous()
+    vim.api.nvim_command(":noh")
+    if vim.bo.filetype=="go" then
+        vim.api.nvim_command("?func .*{")
+    elseif  vim.bo.filetype == "py" then
+        vim.api.nvim_command("?def \\w*")
+    end
+    vim.api.nvim_command("let @/ = ''")
+    vim.api.nvim_command("set hlsearch")
+end
 
+function search_function_next()
+    vim.api.nvim_command(":noh")
+    if vim.bo.filetype=="go" then
+        vim.api.nvim_command("/func .*{")
+    elseif  vim.bo.filetype == "py" then
+        vim.api.nvim_command("/def \\w*")
+    end
+    vim.api.nvim_command("let @/ = ''")
+    vim.api.nvim_command("set hlsearch")
+end
+
+vim.api.nvim_set_keymap("n", "[[", ":lua search_function_previous()<CR>", {silent=true})
+vim.api.nvim_set_keymap("n", "]]", ":lua search_function_next()<CR>", {silent=true})
+
+EOF
 " ===============================  Nvimtree ====================
 "
 
@@ -522,7 +550,7 @@ EOF
 
 nnoremap  <silent> gD         :lua vim.lsp.buf.declaration()<CR>
 nnoremap  <silent> gd         :lua vim.lsp.buf.definition()<CR>
-nnoremap  <silent> ga         :lua vim.lsp.buf.codeaction()<CR>
+nnoremap  <silent> ga         :lua vim.lsp.buf.code_action()<CR>
 nnoremap  <silent> K          :lua vim.lsp.buf.hover()<CR>
 nnoremap  <silent> gi         :lua vim.lsp.buf.implementation()<CR>
 " nnoremap  <silent> <C-k>      :lua vim.lsp.buf.signature_help()<CR>    "-- clash with c-k move
@@ -532,10 +560,10 @@ nnoremap  <silent> <leader>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_
 nnoremap  <silent> <leader>D  :lua vim.lsp.buf.type_definition()<CR>
 nnoremap  <silent> <leader>rn :lua vim.lsp.buf.rename()<CR>
 nnoremap  <silent> gr         :lua vim.lsp.buf.references()<CR>
-nnoremap  <silent> <space>e   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap  <silent> <leader>e   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap  <silent> [d         :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap  <silent> ]d         :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap  <silent> <space>q   :lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap  <silent> <leader>q   :lua vim.lsp.diagnostic.set_loclist()<CR>
 
 
 " ==================== indent line ============================
@@ -647,5 +675,10 @@ nmap ga <Plug>(EasyAlign)
 
 " =============================== hop.nvim =================================
 lua require'hop'.setup()
-nnoremap <C-i> :HopChar1<CR>
-nnoremap <M-i> :HopChar2<CR>
+"nnoremap <M-i> :HopChar1<CR>
+nnoremap <space>j :HopChar2<CR>
+nnoremap <space>l :HopLine<CR>
+" ============================== Bufdel ====================================
+nnoremap <M-w> :BufDel<CR>
+" ============================== toggleterm ====================================
+nnoremap <C-\> :ToggleTerm<CR>
