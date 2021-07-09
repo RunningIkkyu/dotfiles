@@ -550,7 +550,7 @@ EOF
 
 nnoremap  <silent> gD         :lua vim.lsp.buf.declaration()<CR>
 nnoremap  <silent> gd         :lua vim.lsp.buf.definition()<CR>
-nnoremap  <silent> ga         :lua vim.lsp.buf.code_action()<CR>
+nnoremap  <silent> <leader>ga         :lua vim.lsp.buf.code_action()<CR>
 nnoremap  <silent> K          :lua vim.lsp.buf.hover()<CR>
 nnoremap  <silent> gi         :lua vim.lsp.buf.implementation()<CR>
 " nnoremap  <silent> <C-k>      :lua vim.lsp.buf.signature_help()<CR>    "-- clash with c-k move
