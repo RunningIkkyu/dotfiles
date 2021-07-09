@@ -207,7 +207,7 @@ g.nvim_tree_show_icons = {
 
 EOF
 
-nnoremap <leader>n :NvimTreeToggle<CR>
+nnoremap <space>n :NvimTreeToggle<CR>
 
 
 " ================================== Terminal mode ======================
