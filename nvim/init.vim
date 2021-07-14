@@ -91,6 +91,7 @@ call plug#end()
 
 " ========================== Common configurations =========================
 syntax on
+set completeopt=menuone,noselect
 set cursorline
 set termguicolors
 set clipboard+=unnamedplus
@@ -682,3 +683,24 @@ nnoremap <space>l :HopLine<CR>
 nnoremap <M-w> :BufDel<CR>
 " ============================== toggleterm ====================================
 nnoremap <C-\> :ToggleTerm<CR>
+
+" ============================== Merge tools =================================
+"set g:mergetool_layout = 'mr'
+nmap <leader>mt <plug>(MergetoolToggle)
+
+nmap <expr> <leader>mh &diff? '<Plug>(MergetoolDiffExchangeLeft)' : '<C-Left>'
+nmap <expr> <leader>ml &diff? '<Plug>(MergetoolDiffExchangeRight)' : '<C-Right>'
+nmap <expr> <leader>mj &diff? '<Plug>(MergetoolDiffExchangeDown)' : '<C-Down>'
+nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
+
+" If you get "Conflict markers miss common base revision" error message, put
+" the following in your ~/.gitconfig to use diff3 conflict style as a default:
+
+" [merge]
+" conflictStyle = diff3
+"
+" If something goes absolutely wrong, you can always reset conflict markers in
+" a file to their initial state. It's safe to do it only during ongoing merge,
+" otherwise you'd overwrite file in a working tree with version from index.
+" 
+" git checkout --conflict=diff3 {file}
