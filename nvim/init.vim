@@ -91,6 +91,7 @@ call plug#end()
 
 " ========================== Common configurations =========================
 syntax on
+set completeopt=menuone,noselect
 set cursorline
 set termguicolors
 set clipboard+=unnamedplus
@@ -203,11 +204,11 @@ g.nvim_tree_show_icons = {
     folders = 1,
     files = 1
 }
-vim.g.mapleader = " "
+--vim.g.mapleader = " "
 
 EOF
 
-nnoremap <leader>n :NvimTreeToggle<CR>
+nnoremap <space>n :NvimTreeToggle<CR>
 
 
 " ================================== Terminal mode ======================
@@ -436,7 +437,7 @@ require "bufferline".setup {
 
 local opt = {silent = true}
 local map = vim.api.nvim_set_keymap
-vim.g.mapleader = " "
+-- vim.g.mapleader = " "
 
 -- MAPPINGS
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
@@ -550,7 +551,7 @@ EOF
 
 nnoremap  <silent> gD         :lua vim.lsp.buf.declaration()<CR>
 nnoremap  <silent> gd         :lua vim.lsp.buf.definition()<CR>
-nnoremap  <silent> ga         :lua vim.lsp.buf.code_action()<CR>
+nnoremap  <silent> <leader>ga         :lua vim.lsp.buf.code_action()<CR>
 nnoremap  <silent> K          :lua vim.lsp.buf.hover()<CR>
 nnoremap  <silent> gi         :lua vim.lsp.buf.implementation()<CR>
 " nnoremap  <silent> <C-k>      :lua vim.lsp.buf.signature_help()<CR>    "-- clash with c-k move
@@ -682,3 +683,24 @@ nnoremap <space>l :HopLine<CR>
 nnoremap <M-w> :BufDel<CR>
 " ============================== toggleterm ====================================
 nnoremap <C-\> :ToggleTerm<CR>
+
+" ============================== Merge tools =================================
+"set g:mergetool_layout = 'mr'
+nmap <leader>mt <plug>(MergetoolToggle)
+
+nmap <expr> <leader>mh &diff? '<Plug>(MergetoolDiffExchangeLeft)' : '<C-Left>'
+nmap <expr> <leader>ml &diff? '<Plug>(MergetoolDiffExchangeRight)' : '<C-Right>'
+nmap <expr> <leader>mj &diff? '<Plug>(MergetoolDiffExchangeDown)' : '<C-Down>'
+nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
+
+" If you get "Conflict markers miss common base revision" error message, put
+" the following in your ~/.gitconfig to use diff3 conflict style as a default:
+
+" [merge]
+" conflictStyle = diff3
+"
+" If something goes absolutely wrong, you can always reset conflict markers in
+" a file to their initial state. It's safe to do it only during ongoing merge,
+" otherwise you'd overwrite file in a working tree with version from index.
+" 
+" git checkout --conflict=diff3 {file}
