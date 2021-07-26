@@ -108,6 +108,8 @@ set encoding=UTF-8
 set ignorecase
 set smartcase
 
+autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+
 " replace selected string
 vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
 
@@ -186,7 +188,7 @@ local g = vim.g
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
-g.nvim_tree_width = '30%'
+g.nvim_tree_width = '15%'
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 0
@@ -704,3 +706,21 @@ nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
 " otherwise you'd overwrite file in a working tree with version from index.
 " 
 " git checkout --conflict=diff3 {file}
+
+"  ========================= nvim-treesitter ==============================
+"
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  }
+}
+EOF
+
+"  ========================= gitsign ==============================
+"
+lua <<EOF
+require('gitsigns').setup {}
+EOF
