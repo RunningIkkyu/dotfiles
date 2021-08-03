@@ -148,7 +148,7 @@ nnoremap <C-l> <C-w>l
 
 set clipboard+=unnamedplus
 
-colorscheme gruvbox
+colorscheme gruvbox-material
 
 "use [[ / ]] to goto previous/next function
 lua <<EOF
