@@ -59,7 +59,6 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
 
 
-
   "---------------------------- Apperance -------------------------------------
   "Colorscheme
   Plug 'morhetz/gruvbox'
