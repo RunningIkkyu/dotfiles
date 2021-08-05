@@ -110,6 +110,7 @@ set ignorecase
 set smartcase
 
 autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+au BufWritePre *.go !goimports -w %
 
 " replace selected string
 vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
