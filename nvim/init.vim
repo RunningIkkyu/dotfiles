@@ -54,7 +54,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'folke/which-key.nvim'          "show which key
   Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
   Plug 'ap/vim-css-color'              "Preview colors
-  Plug 'junegunn/vim-easy-align'       "Easy align
+  "Plug" 'junegunn/vim-easy-align'       "Easy align
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
 
 
@@ -704,3 +704,15 @@ nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
 " otherwise you'd overwrite file in a working tree with version from index.
 " 
 " git checkout --conflict=diff3 {file}
+"
+" =============================== nvim-treesitter ============================
+"
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  }
+}
+EOF
