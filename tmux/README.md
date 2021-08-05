@@ -2,7 +2,7 @@
 
 ## 📷 Screenshot
 
-![screenshot](https://github.com/RunningIkkyu/dotfiles/blob/main/res/capture_tmux.PNG?raw=true)
+![screenshot](https://raw.githubusercontent.com/RunningIkkyu/dotfiles/main/res/tmux_capture.PNG)
 
 
 ## 🐧 Feature
