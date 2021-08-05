@@ -96,20 +96,16 @@ source $ZSH/oh-my-zsh.sh
 # Tmux setting
 alias tm="tmux attach -t 0 || tmux"
 
-# If has nvim, set editor.
-if command -v nvim &> /dev/null; then
-    export EDITOR="nvim"
-    alias vim="nvim"
-    alias vi="nvim"
-else
-    export EDITOR="vim"
-fi
-
-echo "source $HOME/.alias" >> $HOME/.zshrc
-echo "source $HOME/.exports" >> $HOME/.zshrc
+source /home/ikkyu/.alias
+source /home/ikkyu/.export
 # ======================== Path Environment variable ========================
 #export PATH=$PATH:/home/ikkyu/var/go/bin
 
 # ============================= Scripts =====================================
 # Auto start miniconda.
 #source /home/ikkyu/miniconda3/bin/activate
+#
+
+# ============================ Plugin ================================
+source ~/.zinit/bin/zinit.zsh
+zinit load agkozak/zsh-z

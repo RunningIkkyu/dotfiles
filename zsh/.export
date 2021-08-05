@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -d "/root/go/bin" ]
+then
+    export PATH=$PATH:/root/go/bin
+fi
+
