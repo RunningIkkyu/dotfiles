@@ -44,6 +44,11 @@
 
 ### 2. Install manually
 
+Download TPM:
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
 
 Copy tmux config file:
 
@@ -52,6 +57,15 @@ Copy tmux config file:
 cp ./.tmux.conf $HOME/.tmux.conf
 ```
 
-
 For WSL user, install `wsl-open` and rename to `xdg-open` to open urls (use
 tmux-open plugin).
+
+Source tmux config:
+
+```bash
+tmux source ~/.tmux.conf
+```
+
+Install Plugins:
+
+<kbd>Prefix</kbd> + <kbd>I</kbd>
