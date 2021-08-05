@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'andymass/vim-matchup'          "better matchup
   Plug 'onsails/lspkind-nvim'          "vscode-like pictograms
   Plug 'tpope/vim-fugitive'
+  Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'sheerun/vim-polyglot'
@@ -108,6 +109,9 @@ set encoding=UTF-8
 set ignorecase
 set smartcase
 
+autocmd BufWrite *.go lua vim.lsp.buf.formatting()
+au BufWritePre *.go %!goimports %<CR>:w<CR>
+
 " replace selected string
 vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
 
@@ -146,7 +150,7 @@ nnoremap <C-l> <C-w>l
 
 set clipboard+=unnamedplus
 
-colorscheme gruvbox
+colorscheme gruvbox-material
 
 "use [[ / ]] to goto previous/next function
 lua <<EOF
@@ -186,7 +190,7 @@ local g = vim.g
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
-g.nvim_tree_width = '30%'
+g.nvim_tree_width = '15%'
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 0
@@ -704,8 +708,8 @@ nmap <expr> <leader>mk &diff? '<Plug>(MergetoolDiffExchangeUp)' : '<C-Up>'
 " otherwise you'd overwrite file in a working tree with version from index.
 " 
 " git checkout --conflict=diff3 {file}
-"
-" =============================== nvim-treesitter ============================
+
+"  ========================= nvim-treesitter ==============================
 "
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -716,3 +720,15 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
+"  ========================= gitsign ==============================
+"
+lua <<EOF
+require('gitsigns').setup {}
+EOF
+
+
+"  ========================= git blamer ==============================
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_show_in_visual_modes = 0
