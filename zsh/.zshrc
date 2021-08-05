@@ -96,14 +96,14 @@ source $ZSH/oh-my-zsh.sh
 # Tmux setting
 alias tm="tmux attach -t 0 || tmux"
 
-source /home/ikkyu/.alias
-source /home/ikkyu/.export
+source $HOME/.alias
+source $HOME/.export
 # ======================== Path Environment variable ========================
 #export PATH=$PATH:/home/ikkyu/var/go/bin
 
 # ============================= Scripts =====================================
 # Auto start miniconda.
-#source /home/ikkyu/miniconda3/bin/activate
+# source /home/ikkyu/miniconda3/bin/activate
 #
 
 # ============================ Plugin ================================

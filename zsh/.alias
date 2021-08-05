@@ -1,0 +1,61 @@
+if command -v "nvim" &> /dev/null
+then
+    alias vim="nvim"
+    alias vi="nvim"
+fi
+
+if command -v "kubectl" &> /dev/null
+then
+    # k:    kubectl
+    #
+    # af:    apply -f
+    # ak:    apply -k
+    # g:     get
+    # rm:    delete
+    # rmf:   delete -f
+    # rmk:   delete -k
+    # rming: delete 
+    #
+    # p:    po
+    # svc:  service
+    alias k="kubectl"
+    alias kaf="kubectl apply -f"
+    alias kak="kubectl apply -k"
+    alias kgp="kubectl get po"
+    alias kgsvc="kubectl get svc"
+    alias krm="kubectl delete"
+    alias krmf="kubectl delete -f"
+    alias krmk="kubectl delete -k"
+fi
+
+if command -v git &> /dev/null
+then
+    # g:    git
+    # 
+    # a:    add
+    # m:    commit
+    # pl:   pull
+    # ps:   push
+    # s:    status
+    alias gm="git commit -m "
+    alias ga="git add"
+    alias gs="git status"
+    alias gps="git push"
+    alias gpl="git pull"
+fi
+
+
+if command -v "tmux" &> /dev/null
+then
+    alias tmux="tmux attach -t 0 || tmux"
+fi
+
+if command -v "emacs" &> /dev/null
+then
+    alias e="emacs"
+fi
+
+if command -v "watch" &> /dev/null
+then
+	alias wch="watch -n 1 "
+fi
