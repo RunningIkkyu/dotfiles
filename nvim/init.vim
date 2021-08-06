@@ -34,7 +34,8 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'gyim/vim-boxdraw'
   "Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
   Plug 'karb94/neoscroll.nvim'         "smooth scrolling
-  Plug 'preservim/nerdcommenter'       "Quick comment
+  "Plug 'preservim/nerdcommenter'       "Quick comment
+  Plug 'b3nj5m1n/kommentary'           "Comment text in and out
   Plug 'tpope/vim-surround'            "Vim surrond
   Plug 'terryma/vim-multiple-cursors'  "Multiple cursor
   Plug 'junegunn/fzf.vim'
@@ -57,6 +58,8 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'ap/vim-css-color'              "Preview colors
   "Plug" 'junegunn/vim-easy-align'       "Easy align
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
+  Plug 'nacro90/numb.nvim'             "Preview buffer when user :{number}
+
 
 
   "---------------------------- Apperance -------------------------------------
@@ -76,8 +79,11 @@ call plug#begin('~/.vim/plugged') " Code completion.
   "Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
   "Plug 'edluffy/specs.nvim'           "show cursor position, performance bad
   Plug 'p00f/nvim-ts-rainbow'          "rainbow
+  Plug 'xiyaowong/nvim-cursorword'     "Underlines the word under the cursor.
   
   Plug 'glepnir/galaxyline.nvim'       "statusline. 
+  Plug 'glepnir/dashboard-nvim'        "Startup dashboard
+
 
 call plug#end()
 
@@ -735,3 +741,27 @@ let g:blamer_show_in_visual_modes = 0
 " vim-vsnip
 imap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f>'
 smap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f>'
+
+" ========================== vista ==================================
+"
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" ========================== dashboard nvim ==================================
+let g:dashboard_default_executive ='fzf'
+
+" ========================== numb.nvim ==================================
+"
+lua <<EOF
+require('numb').setup()
+EOF
+
