@@ -104,7 +104,8 @@ source $HOME/.export
 # ============================= Scripts =====================================
 # Auto start miniconda.
 # source /home/ikkyu/miniconda3/bin/activate
-#
+# Bind V to edit command in vim editor
+bindkey -M vicmd  V edit-command-line
 
 # ============================ Plugin ================================
 source ~/.zinit/bin/zinit.zsh

@@ -5,3 +5,8 @@ then
     export PATH=$PATH:/root/go/bin
 fi
 
+
+if command -v "nvim" &> /dev/null
+then
+    export EDITOR="nvim"
+fi
