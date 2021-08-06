@@ -109,7 +109,7 @@ set ignorecase
 set smartcase
 
 autocmd BufWrite *.go lua vim.lsp.buf.formatting()
-au BufWritePre *.go %!goimports %<CR>:w<CR>
+#au BufWritePre *.go %!goimports %<CR>:w<CR>
 
 " replace selected string
 vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><Left>
@@ -731,3 +731,7 @@ EOF
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
+
+" vim-vsnip
+imap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f>'
+smap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f>'
