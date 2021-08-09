@@ -47,7 +47,10 @@ fi
 
 if command -v "tmux" &> /dev/null
 then
-    alias tmux="tmux attach -t 0 || tmux"
+    # Attach to the first unattached tmux session
+    #alias tm="tmux attach -t `tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2>/dev/null | grep 'not attached$' | head -n 1 | cut -d '|' -f1` &> /dev/null || tmux"
+    # Attach to the first tmux session
+    alias tm="tmux attach -t `tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2>/dev/null | head -n 1 | cut -d '|' -f1` &> /dev/null || tmux"
 fi
 
 if command -v "emacs" &> /dev/null

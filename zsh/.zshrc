@@ -100,9 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Tmux setting
-alias tm="tmux attach -t 0 || tmux"
-
 source $HOME/.alias
 source $HOME/.export
 # ======================== Path Environment variable ========================
