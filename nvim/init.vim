@@ -1,4 +1,3 @@
-
 call plug#begin('~/.vim/plugged') " Code completion.
 
   " Plug vim plug instead, packer cannot install plugin headless.
@@ -30,7 +29,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
   Plug 'gyim/vim-boxdraw'
   "Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
   Plug 'karb94/neoscroll.nvim'         "smooth scrolling
@@ -59,6 +58,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   "Plug" 'junegunn/vim-easy-align'       "Easy align
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
   Plug 'nacro90/numb.nvim'             "Preview buffer when user :{number}
+  Plug 'godlygeek/tabular'             "Align things quickly"
 
 
 
@@ -764,4 +764,3 @@ let g:dashboard_default_executive ='fzf'
 lua <<EOF
 require('numb').setup()
 EOF
-
