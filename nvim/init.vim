@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'andymass/vim-matchup'          "better matchup
   Plug 'onsails/lspkind-nvim'          "vscode-like pictograms
   Plug 'tpope/vim-fugitive'
-  Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
+  "Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
   "Plug 'sheerun/vim-polyglot'
@@ -729,7 +729,10 @@ EOF
 "  ========================= gitsign ==============================
 "
 lua <<EOF
-require('gitsigns').setup {}
+require('gitsigns').setup {
+    current_line_blame = true,
+    current_line_blame_delay = 1000,
+}
 EOF
 
 
