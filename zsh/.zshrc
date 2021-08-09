@@ -106,13 +106,14 @@ alias tm="tmux attach -t 0 || tmux"
 source $HOME/.alias
 source $HOME/.export
 # ======================== Path Environment variable ========================
-#export PATH=$PATH:/home/ikkyu/var/go/bin
+# Hook direnv to zsh
+eval "$(direnv hook zsh)"
 
 # ============================= Scripts =====================================
 # Auto start miniconda.
 # source /home/ikkyu/miniconda3/bin/activate
 # Bind V to edit command in vim editor
-bindkey -M vicmd  V edit-command-line
+bindkey -M vicmd V edit-command-line
 
 # ============================ Plugin Start================================
 source ~/.zinit/bin/zinit.zsh
@@ -126,4 +127,5 @@ zinit light Aloxaf/fzf-tab
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 
