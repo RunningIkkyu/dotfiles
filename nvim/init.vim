@@ -4,8 +4,9 @@ call plug#begin('~/.vim/plugged') " Code completion.
   " Plug 'wbthomason/packer.nvim'
 
   " ------------------------- Lsp related --------------------------------------
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
   " Plug 'nvim-lua/completion-nvim'
+  "
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
   Plug 'hrsh7th/nvim-compe'
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'rafamadriz/friendly-snippets'
@@ -22,40 +23,41 @@ call plug#begin('~/.vim/plugged') " Code completion.
 
 
   " ------------------------- Tools & Improvements -----------------------------
+  "Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
+  "Plug 'TaDaa/vimade'                  "fades your inactive buffers..
+  "Plug 'liuchengxu/vista.vim'          "View and search LSP symbols, tags.
+  "Plug 'othree/eregex.vim'             "Better regex
+  "Plug 'preservim/nerdcommenter'       "Quick comment
+  "Plug 'sheerun/vim-polyglot'
   "Plug 'windwp/nvim-autopairs'
+  "Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
+  "Plug 'kevinhwang91/nvim-hlslens'     "hightlinght search length
+  "Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
+  "Plug 'wfxr/minimap.vim'              "nvim minimap
+  "Plug" 'junegunn/vim-easy-align'       "Easy align
+  "
   Plug 'andymass/vim-matchup'          "better matchup
   Plug 'onsails/lspkind-nvim'          "vscode-like pictograms
   Plug 'tpope/vim-fugitive'
-  "Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
-  "Plug 'sheerun/vim-polyglot'
   Plug 'gyim/vim-boxdraw'
-  "Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
   Plug 'karb94/neoscroll.nvim'         "smooth scrolling
-  "Plug 'preservim/nerdcommenter'       "Quick comment
   Plug 'b3nj5m1n/kommentary'           "Comment text in and out
   Plug 'tpope/vim-surround'            "Vim surrond
   Plug 'terryma/vim-multiple-cursors'  "Multiple cursor
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
-  Plug 'liuchengxu/vista.vim'          "View and search LSP symbols, tags.
   Plug 't9md/vim-quickhl'              "quick hightlight works
   Plug 'akinsho/nvim-toggleterm.lua'   "controll nvim terminal better.
   Plug 'AndrewRadev/linediff.vim'      "line diff
   Plug 'samoshkin/vim-mergetool'       "vim merge tools
-  "Plug 'othree/eregex.vim'             "Better regex
-  "Plug 'TaDaa/vimade'                  "fades your inactive buffers..
   Plug 'chrisbra/NrrwRgn'              "open selected region in a split windows.
   Plug 'dstein64/nvim-scrollview'      "scrollbar, use nvim popup
   Plug 'sindrets/diffview.nvim'        "git diff
   Plug 'tversteeg/registers.nvim'      "show nvim register
-  "Plug 'kevinhwang91/nvim-hlslens'     "hightlinght search length
-  "Plug 'wfxr/minimap.vim'              "nvim minimap
   Plug 'folke/which-key.nvim'          "show which key
-  Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
   Plug 'ap/vim-css-color'              "Preview colors
-  "Plug" 'junegunn/vim-easy-align'       "Easy align
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
   Plug 'nacro90/numb.nvim'             "Preview buffer when user :{number}
   Plug 'godlygeek/tabular'             "Align things quickly"
@@ -64,23 +66,23 @@ call plug#begin('~/.vim/plugged') " Code completion.
 
   "---------------------------- Apperance -------------------------------------
   "Colorscheme
-  Plug 'morhetz/gruvbox'
+  "Plug 'morhetz/gruvbox'
+  " Plug 'glepnir/oceanic-material'
+  " Plug 'arcticicestudio/nord-vim'
+  " Plug 'mhartington/oceanic-next'
   Plug 'sainnhe/gruvbox-material'
-  Plug 'glepnir/oceanic-material'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'mhartington/oceanic-next'
 
   "Others
-  Plug 'kosayoda/nvim-lightbulb'       "VSCode bulb for neovim's built-in LSP.
-  "Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
+  Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
   Plug 'akinsho/nvim-bufferline.lua'   "top buffer, tabs.
+  
+  Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
+  Plug 'edluffy/specs.nvim'           "show cursor position, performance bad
+  Plug 'kosayoda/nvim-lightbulb'       "VSCode bulb for neovim's built-in LSP.
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'lukas-reineke/indent-blankline.nvim'
-  "Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
-  "Plug 'edluffy/specs.nvim'           "show cursor position, performance bad
   Plug 'p00f/nvim-ts-rainbow'          "rainbow
   Plug 'xiyaowong/nvim-cursorword'     "Underlines the word under the cursor.
-  
   Plug 'glepnir/galaxyline.nvim'       "statusline. 
   Plug 'glepnir/dashboard-nvim'        "Startup dashboard
 
@@ -452,8 +454,8 @@ local map = vim.api.nvim_set_keymap
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
 
 -- move between tabs
-map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+map("n", ")", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+map("n", "(", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
 
 EOF
 
@@ -747,6 +749,7 @@ smap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f
 
 " ========================== vista ==================================
 "
+nnoremap <space>t :Vista nvim_lsp<CR>
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
