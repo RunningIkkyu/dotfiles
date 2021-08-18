@@ -164,7 +164,7 @@ lua <<EOF
 function search_function_previous()
     vim.api.nvim_command(":noh")
     if vim.bo.filetype=="go" then
-        vim.api.nvim_command("?func .*{")
+        vim.api.nvim_command("?func .*(")
     elseif  vim.bo.filetype == "py" then
         vim.api.nvim_command("?def \\w*")
     end
@@ -175,7 +175,7 @@ end
 function search_function_next()
     vim.api.nvim_command(":noh")
     if vim.bo.filetype=="go" then
-        vim.api.nvim_command("/func .*{")
+        vim.api.nvim_command("/func .*(")
     elseif  vim.bo.filetype == "py" then
         vim.api.nvim_command("/def \\w*")
     end
