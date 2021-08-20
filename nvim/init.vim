@@ -106,6 +106,7 @@ set clipboard+=unnamedplus
 set updatetime=300
 set signcolumn=yes
 set inccommand=nosplit       "increase command
+set maxmempattern=500000     " get rid of 'exceed maxmempattern error'
 set nu
 set rnu
 set laststatus=2
@@ -125,9 +126,12 @@ vnoremap <F4> y:%s/<C-R>=escape(@",'/\')<CR>/<C-R>=escape(@",'/\')<CR>/g<Left><L
 " rename current word  <F3>
 " map <F3> <Esc>:%s/\<<c-r><c-w>\>/<c-r><c-w>/g<Left><Left>
 
-" map ctrl-p to Fuzzy finder
+" fzf.vim
 nmap <silent> <C-p> <Esc>:FZF<CR>
 nmap <silent> <M-p> <Esc>:Rg<CR>
+nmap <silent> <Space>bl <Esc>:BLines<CR>
+nmap <silent> <Space>bt <Esc>:BTags<CR>
+nmap <silent> <Space>m <Esc>:Marks<CR>
 
 " map // to search selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
@@ -471,6 +475,10 @@ vim.api.nvim_set_keymap( "n", "<leader>fg", ":Telescope live_grep <CR>", {norema
 vim.api.nvim_set_keymap( "n", "<leader>ff", ":Telescope find_files <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap( "n", "<leader>gr", ":Telescope lsp_references <CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap( "n", "<leader>fc", ":Telescope current_buffer_fuzzy_find <CR>", {noremap = true, silent = true})
+-- Tag releated.
+vim.api.nvim_set_keymap( "n", "<leader>tw", ":Telescope lsp_dynamic_workspace_symbols <CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap( "n", "<leader>tc", ":Telescope lsp_document_symbols <CR>", {noremap = true, silent = true})
+
 -- vim.g.mapleader = " "
 
 EOF
@@ -563,7 +571,8 @@ EOF
 nnoremap  <silent> gD         :lua vim.lsp.buf.declaration()<CR>
 nnoremap  <silent> gd         :lua vim.lsp.buf.definition()<CR>
 nnoremap  <silent> <leader>ga         :lua vim.lsp.buf.code_action()<CR>
-nnoremap  <silent> K          :lua vim.lsp.buf.hover()<CR>
+"nnoremap  <silent> K          :lua vim.lsp.buf.hover()<CR>
+nnoremap  <silent> K          :Lspsaga hover_doc<CR>
 nnoremap  <silent> gi         :lua vim.lsp.buf.implementation()<CR>
 " nnoremap  <silent> <C-k>      :lua vim.lsp.buf.signature_help()<CR>    "-- clash with c-k move
 nnoremap  <silent> <leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
@@ -749,7 +758,7 @@ smap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f
 
 " ========================== vista ==================================
 "
-nnoremap <space>t :Vista nvim_lsp<CR>
+nnoremap <leader>tv :Vista nvim_lsp<CR>
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
