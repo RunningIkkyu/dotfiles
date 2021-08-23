@@ -105,10 +105,11 @@ set termguicolors
 set clipboard+=unnamedplus
 set updatetime=300
 set signcolumn=yes
+set colorcolumn=80
 set inccommand=nosplit       "increase command
 set maxmempattern=500000     " get rid of 'exceed maxmempattern error'
-set nu
-set rnu
+set number
+set relativenumber
 set laststatus=2
 set expandtab       " Always use spaces instead of tabs.
 set tabstop=4       " Tab width after characters. 
