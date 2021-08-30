@@ -114,10 +114,11 @@ bindkey -M vicmd V edit-command-line
 
 # ============================ Plugin Start================================
 source ~/.zinit/bin/zinit.zsh
-zinit load agkozak/zsh-z
 
 zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
+# NOTE: Make sure fzf and fasd has been install on your system.
+zinit light wookayin/fzf-fasd
 zinit light Aloxaf/fzf-tab
 
 # ============================ Plugin End ================================
