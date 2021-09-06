@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
 
 
   " ------------------------- Tools & Improvements -----------------------------
-  "Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
+  Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
   "Plug 'TaDaa/vimade'                  "fades your inactive buffers..
   "Plug 'liuchengxu/vista.vim'          "View and search LSP symbols, tags.
   "Plug 'othree/eregex.vim'             "Better regex
@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   "Plug" 'junegunn/vim-easy-align'       "Easy align
   "
   Plug 'andymass/vim-matchup'          "better matchup
+  Plug 'norcalli/nvim-colorizer.lua'   "Show color for color code.
   Plug 'onsails/lspkind-nvim'          "vscode-like pictograms
   Plug 'tpope/vim-fugitive'
   Plug 'lewis6991/gitsigns.nvim'
@@ -743,19 +744,17 @@ EOF
 "  ========================= gitsign ==============================
 "
 lua <<EOF
-require('gitsigns').setup {
-    --current_line_blame = true,
-    --current_line_blame_delay = 1000,
-    -- current_line_blame_opts.delay,
-
-}
+require('gitsigns').setup {}
 EOF
 
+"  ========================= colorizer ==============================
+lua require'colorizer'.setup()
 
 "  ========================= git blamer ==============================
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
+highlight Blamer ctermfg=439 guifg=#5a524c
 
 " vim-vsnip
 imap <expr> <C-f>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-f>'
