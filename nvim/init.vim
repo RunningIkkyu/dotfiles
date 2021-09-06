@@ -73,7 +73,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'sainnhe/gruvbox-material'
 
   "Others
-  #Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
+  "Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
   Plug 'akinsho/nvim-bufferline.lua'   "top buffer, tabs.
   
   Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
@@ -91,9 +91,9 @@ call plug#end()
 
 " =============================== auto install plugin =================================
 " autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
+  "\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  "\|   PlugInstall --sync | q
+  "\| endif
 
 
 
@@ -433,8 +433,10 @@ local activeBuffer_fg = "#ebdbb2"
 
 require "bufferline".setup {
     options = {
-        offsets = {{filetype = "NvimTree", text = ""}},
+        -- offsets = {{filetype = "NvimTree", text = ""}},
+        offsets = {{filetype = "NvimTree", text = "File Explorer", text_align = "left"}},
         buffer_close_icon = "",
+        diagnostics = "nvim_lsp",
         modified_icon = "",
         close_icon = " ",
         left_trunc_marker = "",
@@ -446,8 +448,8 @@ require "bufferline".setup {
         enforce_regular_tabs = false,
         view = "multiwindow",
         show_buffer_close_icons = true,
-        separator_style = "thin",
-        mappings = "true"
+        --separator_style = "thin",
+        separator_style = "slant",
     },
 }
 
@@ -742,8 +744,10 @@ EOF
 "
 lua <<EOF
 require('gitsigns').setup {
-    current_line_blame = true,
-    current_line_blame_delay = 1000,
+    --current_line_blame = true,
+    --current_line_blame_delay = 1000,
+    -- current_line_blame_opts.delay,
+
 }
 EOF
 
@@ -770,7 +774,7 @@ set statusline+=%{NearestMethodOrFunction()}
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+"autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " ========================== dashboard nvim ==================================
 let g:dashboard_default_executive ='fzf'
