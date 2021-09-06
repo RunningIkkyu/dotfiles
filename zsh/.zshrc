@@ -102,6 +102,10 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.alias
 source $HOME/.export
+# personal configs.
+if [ -e '$HOME/.local.zsh' ]; then
+    source $HOME/.local.zsh
+fi
 # ======================== Path Environment variable ========================
 # Hook direnv to zsh
 eval "$(direnv hook zsh)"
@@ -120,6 +124,7 @@ zinit light romkatv/powerlevel10k
 # NOTE: Make sure fzf and fasd has been install on your system.
 zinit light wookayin/fzf-fasd
 zinit light Aloxaf/fzf-tab
+zinit light agkozak/zsh-z
 
 # ============================ Plugin End ================================
 
