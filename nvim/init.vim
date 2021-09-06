@@ -73,7 +73,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'sainnhe/gruvbox-material'
 
   "Others
-  Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
+  #Plug 'romgrk/barbar.nvim'           "Tabs, as understood by any other editor.
   Plug 'akinsho/nvim-bufferline.lua'   "top buffer, tabs.
   
   Plug 'yamatsum/nvim-cursorline'     "ruler, performance bad
