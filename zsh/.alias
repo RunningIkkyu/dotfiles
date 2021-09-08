@@ -42,6 +42,7 @@ then
     alias gs="git status"
     alias gps="git push"
     alias gpl="git pull"
+    alias gck="git checkout"
 fi
 
 
