@@ -102,10 +102,6 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.alias
 source $HOME/.export
-# personal configs.
-if [ -e '$HOME/.local.zsh' ]; then
-    source $HOME/.local.zsh
-fi
 # ======================== Path Environment variable ========================
 # Hook direnv to zsh
 eval "$(direnv hook zsh)"
@@ -131,4 +127,3 @@ zinit light agkozak/zsh-z
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-

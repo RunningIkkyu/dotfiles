@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -d "/root/go/bin" ]
+if [ -d "$HOME/go/bin" ]
 then
-    export PATH=$PATH:/root/go/bin
+    export PATH=$PATH:$HOME/go/bin
 fi
 
 
@@ -10,3 +10,4 @@ if command -v "nvim" &> /dev/null
 then
     export EDITOR="nvim"
 fi
+

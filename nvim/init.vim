@@ -62,6 +62,8 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'phaazon/hop.nvim'              "Easy motion for neovim
   Plug 'nacro90/numb.nvim'             "Preview buffer when user :{number}
   Plug 'godlygeek/tabular'             "Align things quickly"
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 
 
 
@@ -106,7 +108,7 @@ set termguicolors
 set clipboard+=unnamedplus
 set updatetime=300
 set signcolumn=yes
-set colorcolumn=80
+set colorcolumn=130
 set inccommand=nosplit       "increase command
 set maxmempattern=500000     " get rid of 'exceed maxmempattern error'
 set number
@@ -793,6 +795,7 @@ lua <<EOF
 require('go').setup{
      auto_format = true,
      auto_lint = false,
+     linter = 'golangci-lint',
 }
 
 -- Defualt config
