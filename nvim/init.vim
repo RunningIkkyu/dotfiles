@@ -63,6 +63,7 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'nacro90/numb.nvim'             "Preview buffer when user :{number}
   Plug 'godlygeek/tabular'             "Align things quickly"
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  Plug 'kdheepak/lazygit.nvim'         "lazygit intergration. Require: lazygit
 
 
 
