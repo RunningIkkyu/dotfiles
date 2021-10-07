@@ -194,4 +194,4 @@ map('n', ')', '<cmd>tabnext<cr>')
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], silent) -- new tab
 
 
-
+vim.cmd [[colorscheme gruvbox-material]]

@@ -9,9 +9,18 @@ return require('packer').startup(function()
 
   --  ------------------------- Lsp related --------------------------------------
   --  use 'nvim-lua/completion-nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip-integ'
+  use {
+      'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' ,
+      config=[[require('config.treesitter')]],
+  }
+  use {
+      'hrsh7th/nvim-compe',
+      config=[[require('config.nvim_compe')]],
+  }
+  use {
+      'hrsh7th/vim-vsnip-integ',
+      config=[[require('config.nvim_compe')]],
+  }
   use 'rafamadriz/friendly-snippets'
   use 'hrsh7th/vim-vsnip'
   use 'neovim/nvim-lspconfig'
@@ -52,7 +61,7 @@ return require('packer').startup(function()
   use 'gyim/vim-boxdraw'
   use {
     'karb94/neoscroll.nvim',           --smooth scrolling
-      config = [[require('neoscroll').setup()]],
+      config = [[require('config.neoscroll')]],
   }
   use 'b3nj5m1n/kommentary'             --Comment text in and out
   use 'tpope/vim-surround'              --Vim surrond
