@@ -17,23 +17,26 @@ return require('packer').startup(function()
       'hrsh7th/nvim-compe',
       config=[[require('config.nvim_compe')]],
   }
-  use {
-      'hrsh7th/vim-vsnip-integ',
-      config=[[require('config.nvim_compe')]],
-  }
+  use 'hrsh7th/vim-vsnip-integ' 
   use 'rafamadriz/friendly-snippets'
   use 'hrsh7th/vim-vsnip'
-  use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'      --better lsp UI
-  use 'folke/lsp-colors.nvim'     --lsp color
-  use 'ray-x/lsp_signature.nvim'  --Show function signature
+  use {
+      'neovim/nvim-lspconfig',
+       config=[[require('config.lsp_config')]],
+  }
+  use {
+      'kabouzeid/nvim-lspinstall',      --install language server automatically.
+      config=[[require('config.lsp_install')]],
+  }
+  use 'glepnir/lspsaga.nvim'            --better lsp UI
+  use 'folke/lsp-colors.nvim'           --lsp color
+  use 'ray-x/lsp_signature.nvim'        --Show function signature
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'kabouzeid/nvim-lspinstall' --install language server automatically.
-  use 'ojroques/nvim-bufdel'      --better buffer delection
-  use 'crispgm/nvim-go'           --Golang development plugin
-  use 'sbdchd/neoformat'          --✨A (Neo)vim plugin for formatting code.
+  use 'ojroques/nvim-bufdel'            --better buffer delection
+  use 'crispgm/nvim-go'                 --Golang development plugin
+  use 'sbdchd/neoformat'                --✨A (Neo)vim plugin for formatting code.
 
   -- ------------------------- Tools & Improvements -----------------------------
   use 'APZelos/blamer.nvim'             --A git blame plugin for (neo)vim
