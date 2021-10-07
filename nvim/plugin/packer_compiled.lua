@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ikkyu/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/ikkyu/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/ikkyu/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/ikkyu/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ikkyu/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/chenglongwang/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/chenglongwang/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/chenglongwang/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/chenglongwang/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/chenglongwang/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,260 +71,284 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   NrrwRgn = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/NrrwRgn"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/NrrwRgn"
   },
   ["blamer.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/blamer.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/blamer.nvim"
   },
   ["dashboard-nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
   ["diffview.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/diffview.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/diffview.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/friendly-snippets"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
   fzf = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/fzf"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/fzf"
   },
   ["fzf.vim"] = {
+    config = { "require('config.fzf')" },
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/fzf.vim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["gruvbox-material"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/gruvbox-material"
   },
   ["hop.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/hop.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/hop.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/impatient.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/impatient.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   kommentary = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/kommentary"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["linediff.vim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/linediff.vim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/linediff.vim"
   },
   ["lsp-colors.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   ["mapx.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/mapx.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/mapx.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    config = { "require('config.markdown_preview')" },
+    loaded = true,
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
   },
   neoformat = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/neoformat"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/neoformat"
   },
   neogen = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/neogen"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/neogen"
   },
   neogit = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/neogit"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["neoscroll.nvim"] = {
+    config = { "require('neoscroll').setup()" },
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
   },
   ["numb.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/numb.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/numb.nvim"
   },
   ["nvim-bqf"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-bqf"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-bqf"
   },
   ["nvim-bufdel"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-bufdel"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-bufdel"
   },
   ["nvim-bufferline.lua"] = {
+    config = { "require('config.buffer_line')" },
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-cursorline"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
   },
   ["nvim-cursorword"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-cursorword"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-cursorword"
   },
   ["nvim-go"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-go"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-go"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-scrollview"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-scrollview"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-scrollview"
   },
   ["nvim-toggleterm.lua"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
   },
   ["nvim-tree.lua"] = {
     config = { "require('config.nvim_tree')" },
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["registers.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/registers.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/registers.nvim"
   },
   ["specs.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/specs.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/specs.nvim"
   },
   tabular = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/tabular"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/tabular"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   undotree = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/undotree"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/undotree"
   },
   ["vim-boxdraw"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-boxdraw"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-boxdraw"
   },
   ["vim-css-color"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-css-color"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-css-color"
   },
   ["vim-easy-align"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-easy-align"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-easy-align"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-matchup"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-matchup"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-matchup"
   },
   ["vim-mergetool"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-mergetool"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-mergetool"
   },
   ["vim-multiple-cursors"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
   },
   ["vim-quickhl"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-quickhl"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-quickhl"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
   ["vim-vsnip-integ"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/home/ikkyu/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+    path = "/Users/chenglongwang/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: markdown-preview.nvim
+time([[Config for markdown-preview.nvim]], true)
+require('config.markdown_preview')
+time([[Config for markdown-preview.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('config.nvim_tree')
 time([[Config for nvim-tree.lua]], false)
+-- Config for: fzf.vim
+time([[Config for fzf.vim]], true)
+require('config.fzf')
+time([[Config for fzf.vim]], false)
+-- Config for: nvim-bufferline.lua
+time([[Config for nvim-bufferline.lua]], true)
+require('config.buffer_line')
+time([[Config for nvim-bufferline.lua]], false)
+-- Config for: neoscroll.nvim
+time([[Config for neoscroll.nvim]], true)
+require('neoscroll').setup()
+time([[Config for neoscroll.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

@@ -1,6 +1,6 @@
 -- dofile('./lua/plugins.lua')
-require 'impatient'
-require 'plugins'
+require('plugins')
+-- require 'impatient'
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
@@ -12,12 +12,6 @@ local map = utils.map
 -- Leader/local leader
 g.mapleader = [[ ]]
 g.maplocalleader = [[,]]
-
--- Skip some remote provider loading
-g.loaded_python_provider = 0
-g.python_host_prog = '/usr/bin/python2'
-g.python3_host_prog = '/usr/bin/python'
-g.node_host_prog = '/usr/bin/neovim-node-host'
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
@@ -42,6 +36,7 @@ local buffer = { o, bo }
 local window = { o, wo }
 opt('textwidth', 100, buffer)
 opt('scrolloff', 7)
+opt('mouse', 'a')
 opt('wildignore', '*.o,*~,*.pyc')
 opt('wildmode', 'longest,full')
 opt('whichwrap', vim.o.whichwrap .. '<,>,h,l')
@@ -79,7 +74,7 @@ opt('signcolumn', 'yes:1', window)
 -- Colorscheme
 opt('termguicolors', true)
 opt('background', 'dark')
-cmd [[colorscheme gruvbox-material]]
+-- cmd [[colorscheme gruvbox-material]]
 -- cmd [[colorscheme nazgul]]
 
 -- Autocommands
@@ -195,19 +190,8 @@ map('n', '(', '<cmd>tabpre<cr>')
 map('n', ')', '<cmd>tabnext<cr>')
 
 
--------------------------------- Plugin mapping ------------------------------
--- Nvim-tree
-map('n', '<localleader>f', ':NvimTreeToggle<cr>', silent)
--- FZF
-map('n', '<leader>p', ':FZF<cr>', silent)
-map('n', '<localleader>p', ':Rg<cr>', silent)
-
-
 -- MAPPINGS
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], silent) -- new tab
 
--- move between tabs
-map("n", ")", ":BufferLineCycleNext<CR>", silent)
-map("n", "(", ":BufferLineCyclePrev<CR>", silent)
 
 

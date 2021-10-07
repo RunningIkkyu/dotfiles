@@ -21,21 +21,23 @@ call plug#begin('~/.vim/plugged') " Code completion.
   Plug 'kabouzeid/nvim-lspinstall' "install language server automatically.
   Plug 'ojroques/nvim-bufdel'      "better buffer delection
   Plug 'crispgm/nvim-go'           "Golang development plugin
+  Plug 'sbdchd/neoformat'          "✨A (Neo)vim plugin for formatting code.
 
   " ------------------------- Tools & Improvements -----------------------------
-  Plug 'APZelos/blamer.nvim'           "A git blame plugin for (neo)vim
+  Plug 'APZelos/blamer.nvim'            "A git blame plugin for (neo)vim
+  Plug 'mbbill/undotree'                "The undo history visualizer for VIM 
+  Plug 'TimUntersberger/neogit'         "magit for neovim
   "Plug 'TaDaa/vimade'                  "fades your inactive buffers..
   "Plug 'liuchengxu/vista.vim'          "View and search LSP symbols, tags.
   "Plug 'othree/eregex.vim'             "Better regex
   "Plug 'preservim/nerdcommenter'       "Quick comment
   "Plug 'sheerun/vim-polyglot'
   "Plug 'windwp/nvim-autopairs'
-  "Plug 'yuttie/comfortable-motion.vim'  "smooth scrolling
+  "Plug 'yuttie/comfortable-motion.vim' "smooth scrolling
   "Plug 'kevinhwang91/nvim-hlslens'     "hightlinght search length
   "Plug 'kdav5758/TrueZen.nvim'         "forcus, minimize
   "Plug 'wfxr/minimap.vim'              "nvim minimap
-  "Plug" 'junegunn/vim-easy-align'       "Easy align
-  "
+  Plug 'junegunn/vim-easy-align'      "Easy align
   Plug 'andymass/vim-matchup'          "better matchup
   Plug 'norcalli/nvim-colorizer.lua'   "Show color for color code.
   Plug 'onsails/lspkind-nvim'          "vscode-like pictograms
@@ -104,6 +106,7 @@ call plug#end()
 " ========================== Common configurations =========================
 syntax on
 set completeopt=menuone,noselect
+set noswapfile
 set cursorline
 set termguicolors
 set clipboard+=unnamedplus
@@ -880,4 +883,9 @@ require('go').setup{
 --     quick_type_flags = {'--just-types'},
 -- }
 -- 
+EOF
+" ========================== neogit ===================================
+"
+lua <<EOF
+require('neogit').setup{}
 EOF
