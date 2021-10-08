@@ -17,7 +17,7 @@ return require('packer').startup(function()
       'hrsh7th/nvim-compe',
       config=[[require('config.nvim_compe')]],
   }
-  use 'hrsh7th/vim-vsnip-integ' 
+  use 'hrsh7th/vim-vsnip-integ'
   use 'rafamadriz/friendly-snippets'
   use 'hrsh7th/vim-vsnip'
   use {
@@ -35,8 +35,21 @@ return require('packer').startup(function()
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'ojroques/nvim-bufdel'            --better buffer delection
-  use 'crispgm/nvim-go'                 --Golang development plugin
+  use {
+      'crispgm/nvim-go',                --Golang development plugin
+      disable=true,
+      config=[[require("config.nvim_go")]],
+  }
+  use {
+      'ray-x/go.nvim',                --Golang development plugin
+      disable=true,
+      config=[[require("config.go_nvim.lua")]],
+  }
   use 'sbdchd/neoformat'                --✨A (Neo)vim plugin for formatting code.
+  use {
+      'gfanto/fzf-lsp.nvim',            -- Enable the power of fzf fuzzy search for the neovim built in lsp
+      config=[[require("config.fzf_lsp")]],
+  }
 
   -- ------------------------- Tools & Improvements -----------------------------
   use 'APZelos/blamer.nvim'             --A git blame plugin for (neo)vim
@@ -77,7 +90,10 @@ return require('packer').startup(function()
   use 't9md/vim-quickhl'                --quick hightlight works
   use 'akinsho/nvim-toggleterm.lua'     --controll nvim terminal better.
   use 'AndrewRadev/linediff.vim'        --line diff
-  use 'samoshkin/vim-mergetool'         --vim merge tools
+  use {
+      'samoshkin/vim-mergetool',        --vim merge tools
+      config=[[require('config.merge_tool')]],
+  }
   use 'chrisbra/NrrwRgn'                --open selected region in a split windows.
   use 'dstein64/nvim-scrollview'        --scrollbar, use nvim popup
   use 'sindrets/diffview.nvim'          --git diff
@@ -125,7 +141,10 @@ return require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim'
   use 'p00f/nvim-ts-rainbow'          --rainbow
   use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
-  use 'glepnir/galaxyline.nvim'       --statusline. 
+  use {
+      'glepnir/galaxyline.nvim',      --statusline. 
+      config=[[require('config.galaxy_line')]],
+  }
   use 'glepnir/dashboard-nvim'        --Startup dashboard
 end)
 
