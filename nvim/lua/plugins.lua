@@ -42,8 +42,7 @@ return require('packer').startup(function()
   }
   use {
       'ray-x/go.nvim',                --Golang development plugin
-      disable=true,
-      config=[[require("config.go_nvim.lua")]],
+      config=[[require("config.go_nvim")]],
   }
   use 'sbdchd/neoformat'                --✨A (Neo)vim plugin for formatting code.
   use {
