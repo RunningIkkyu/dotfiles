@@ -31,7 +31,10 @@ return require('packer').startup(function()
   use 'glepnir/lspsaga.nvim'            --better lsp UI
   use 'folke/lsp-colors.nvim'           --lsp color
   use 'ray-x/lsp_signature.nvim'        --Show function signature
-  use 'nvim-telescope/telescope.nvim'
+  use {
+      'nvim-telescope/telescope.nvim',
+      config=[[require('config.telescope')]],
+  }
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use {
@@ -50,7 +53,13 @@ return require('packer').startup(function()
   use 'sbdchd/neoformat'                --✨A (Neo)vim plugin for formatting code.
   use {
       'gfanto/fzf-lsp.nvim',            -- Enable the power of fzf fuzzy search for the neovim built in lsp
+      disable=true,
       config=[[require("config.fzf_lsp")]],
+  }
+  use {
+      'ojroques/nvim-lspfuzzy',         -- Enable the power of fzf fuzzy search for the neovim built in lsp
+      disable=true,                     -- Just use telescope
+      config=[[require("config.lsp_fuzzy")]],
   }
 
   -- ------------------------- Tools & Improvements -----------------------------
@@ -74,7 +83,10 @@ return require('packer').startup(function()
   --
   use 'andymass/vim-matchup'            --better matchup
   use 'norcalli/nvim-colorizer.lua'     --Show color for color code.
-  use 'onsails/lspkind-nvim'            --vscode-like pictograms
+  use {
+      'onsails/lspkind-nvim',            --vscode-like pictograms
+      config = [[require('config.lspkind')]],
+  }
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
   use { 'kyazdani42/nvim-tree.lua', config = [[require('config.nvim_tree')]]}

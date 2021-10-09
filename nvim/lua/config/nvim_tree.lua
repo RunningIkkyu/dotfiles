@@ -61,5 +61,5 @@ require'nvim-tree'.setup {
         }
     }
 }
-vim.api.nvim_set_keymap("n", "<localleader>f", ":NvimTreeToggle<CR>", { silent=true, noremap= true })
+vim.api.nvim_set_keymap("n", "<localleader>n", ":NvimTreeToggle<CR>", { silent=true, noremap= true })
 
