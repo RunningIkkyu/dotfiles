@@ -34,7 +34,10 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'ojroques/nvim-bufdel'            --better buffer delection
+  use {
+      'ojroques/nvim-bufdel',            --better buffer delection
+      config=[[require("config.nvim_bufdel")]],
+  }
   use {
       'crispgm/nvim-go',                --Golang development plugin
       disable=true,
@@ -53,7 +56,10 @@ return require('packer').startup(function()
   -- ------------------------- Tools & Improvements -----------------------------
   use 'APZelos/blamer.nvim'             --A git blame plugin for (neo)vim
   use 'lewis6991/impatient.nvim' 	--Speed up loading Lua modules to improve startup.
-  use 'mbbill/undotree'                 --The undo history visualizer for VIM 
+  use {
+      'mbbill/undotree',                --The undo history visualizer for VIM
+      config=[[require("config.undo_tree")]],
+  }
   --use 'TaDaa/vimade'                  --fades your inactive buffers..
   --use 'liuchengxu/vista.vim'          --View and search LSP symbols, tags.
   --use 'othree/eregex.vim'             --Better regex
@@ -141,7 +147,7 @@ return require('packer').startup(function()
   use 'p00f/nvim-ts-rainbow'          --rainbow
   use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
   use {
-      'glepnir/galaxyline.nvim',      --statusline. 
+      'glepnir/galaxyline.nvim',      --statusline.
       config=[[require('config.galaxy_line')]],
   }
   use 'glepnir/dashboard-nvim'        --Startup dashboard
@@ -156,8 +162,8 @@ end)
 -- local function neoscroll_setup()
 --   require('neoscroll').setup()
 -- end
--- 
--- 
+--
+--
 -- local function treesitter_setup()
 --   require('nvim-treesitter').setup{
 --   highlight = {
@@ -176,9 +182,9 @@ end)
 --   },
 -- }
 -- end
--- 
--- 
--- 
+--
+--
+--
 -- local function nvim_tree_setup()
 -- 	require'nvim-tree'.setup {
 -- 		-- disables netrw completely
@@ -224,7 +230,7 @@ end)
 -- 			-- the command arguments as a list
 -- 			args = {}
 -- 		},
--- 
+--
 -- 		view = {
 -- 			-- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
 -- 			width = 30,
@@ -244,16 +250,16 @@ end)
 -- 		}
 -- 	}
 --   --vim.api.nvim_set_keymap("n", "<leader>t", ":NvimTreeToggle<CR>", { silent=true, noremap= true })
--- 
+--
 -- end
--- 
--- local function status_line_setup() 
--- 
+--
+-- local function status_line_setup()
+--
 -- local gl = require("galaxyline")
 -- local gls = gl.section
--- 
+--
 -- gl.short_line_list = {" "}
--- 
+--
 -- local colors = {
 --     bg = "#3c3c3c",
 --     fg = "#ebdbb2",
@@ -265,7 +271,7 @@ end)
 --     yellow = "#d79921",
 --     grep = "#ebdbb2",
 -- }
--- 
+--
 -- gls.left[2] = {
 --     statusIcon = {
 --         provider = function()
@@ -276,7 +282,7 @@ end)
 --         separator_highlight = {colors.blue, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- gls.left[3] = {
 --     FileIcon = {
 --         provider = "FileIcon",
@@ -284,7 +290,7 @@ end)
 --         highlight = {colors.fg, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- gls.left[4] = {
 --     FileName = {
 --         provider = {"FileName"},
@@ -294,7 +300,7 @@ end)
 --         separator_highlight = {colors.lightbg, colors.lightbg2}
 --     }
 -- }
--- 
+--
 -- gls.left[5] = {
 --     current_dir = {
 --         provider = function()
@@ -306,7 +312,7 @@ end)
 --         separator_highlight = {colors.lightbg2, colors.bg}
 --     }
 -- }
--- 
+--
 -- local checkwidth = function()
 --     local squeeze_width = vim.fn.winwidth(0) / 2
 --     if squeeze_width > 30 then
@@ -314,7 +320,7 @@ end)
 --     end
 --     return false
 -- end
--- 
+--
 -- gls.left[6] = {
 --     DiffAdd = {
 --         provider = "DiffAdd",
@@ -323,7 +329,7 @@ end)
 --         highlight = {colors.fg, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.left[7] = {
 --     DiffModified = {
 --         provider = "DiffModified",
@@ -332,7 +338,7 @@ end)
 --         highlight = {colors.grey, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.left[8] = {
 --     DiffRemove = {
 --         provider = "DiffRemove",
@@ -341,7 +347,7 @@ end)
 --         highlight = {colors.grey, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.left[9] = {
 --     DiagnosticError = {
 --         provider = "DiagnosticError",
@@ -349,7 +355,7 @@ end)
 --         highlight = {colors.red, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.left[10] = {
 --     DiagnosticWarn = {
 --         provider = "DiagnosticWarn",
@@ -357,7 +363,7 @@ end)
 --         highlight = {colors.yellow, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.right[1] = {
 --     GitIcon = {
 --         provider = function()
@@ -369,7 +375,7 @@ end)
 --         separator_highlight = {colors.lightbg, colors.bg}
 --     }
 -- }
--- 
+--
 -- gls.right[2] = {
 --     GitBranch = {
 --         provider = "GitBranch",
@@ -377,7 +383,7 @@ end)
 --         highlight = {colors.grey, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- gls.right[3] = {
 --     viMode_icon = {
 --         provider = function()
@@ -388,7 +394,7 @@ end)
 --         separator_highlight = {colors.red, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- gls.right[4] = {
 --     ViMode = {
 --         provider = function()
@@ -402,7 +408,7 @@ end)
 --                 R = "Replace"
 --             }
 --             local current_Mode = alias[vim.fn.mode()]
--- 
+--
 --             if current_Mode == nil then
 --                 return "  Terminal "
 --             else
@@ -412,7 +418,7 @@ end)
 --         highlight = {colors.red, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- gls.right[5] = {
 --     time_icon = {
 --         provider = function()
@@ -423,7 +429,7 @@ end)
 --         highlight = {colors.lightbg, colors.green}
 --     }
 -- }
--- 
+--
 -- gls.right[6] = {
 --     time = {
 --         provider = function()
@@ -432,14 +438,14 @@ end)
 --         highlight = {colors.green, colors.lightbg}
 --     }
 -- }
--- 
+--
 -- end
--- 
+--
 -- local function buffline_setup()
--- 
+--
 -- local bar_fg = "#928374"
 -- local activeBuffer_fg = "#ebdbb2"
--- 
+--
 -- require "bufferline".setup {
 --     options = {
 --         -- offsets = {{filetype = "NvimTree", text = ""}},
@@ -461,30 +467,30 @@ end)
 --         separator_style = "slant",
 --     },
 -- }
--- 
+--
 -- local opt = {silent = true}
 -- local map = vim.api.nvim_set_keymap
 -- -- vim.g.mapleader = " "
--- 
--- 
+--
+--
 -- end
--- 
+--
 -- --------------------------- plugins enbale -------------------------------
--- 
+--
 -- -- treesitter_setup()
 -- -- nvim_tree_setup()
 -- -- neoscroll_setup()
 -- -- status_line_setup()
 -- -- buffline_setup()
 -- map('n', '<localleader>t', ':NvimTreeToggle<cr>')
--- 
--- 
--- 
+--
+--
+--
 -- local plugins = setmetatable({}, {
 --   __index = function(_, key)
 --     init()
 --     return packer[key]
 --   end,
 -- })
--- 
+--
 -- return plugins
