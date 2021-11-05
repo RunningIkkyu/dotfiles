@@ -134,6 +134,7 @@ return require('packer').startup(function()
 			requires = "nvim-treesitter/nvim-treesitter"
 	}
   use 'b0o/mapx.nvim'                   -- A better way to create key mappings in Neovim.
+  use 'pierreglaser/folding-nvim'       -- LSP-Powered folding plugin.
 
   ------------------------------ Apperance -------------------------------------
   --Colorscheme

@@ -60,6 +60,7 @@ opt('shortmess', o.shortmess .. 'c')
 opt('joinspaces', false)
 opt('guicursor', [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]])
 opt('updatetime', 500)
+opt('maxmempattern', 1000000000)
 opt('conceallevel', 2, window)
 opt('concealcursor', 'nc', window)
 opt('previewheight', 5)
@@ -132,6 +133,22 @@ map('t', 'jj', [[<C-\><C-n>]])
 
 -- Yank to clipboard
 map({ 'n', 'v' }, 'y+', '<cmd>set opfunc=util#clipboard_yank<cr>g@', silent)
+
+vim.cmd([[
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': ['tmux', 'load-buffer', '-'],
+      \      '*': ['tmux', 'load-buffer', '-'],
+      \    },
+      \   'paste': {
+      \      '+': ['tmux', 'save-buffer', '-'],
+      \      '*': ['tmux', 'save-buffer', '-'],
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+]])
+
 
 -- remove lines contain selected contents
 -- vnoremap <silent> <leader>d y:g/\V<C-R>=escape(@",'/\')<CR>/d<CR>

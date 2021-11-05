@@ -13,10 +13,18 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+function on_attach_callback(client, bufnr)
+  -- If you use completion-nvim/diagnostic-nvim, uncomment those two lines.
+  -- require('diagnostic').on_attach()
+  -- require('completion').on_attach()
+  require('folding').on_attach()
+end
+
 
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
   require'lspconfig'[server].setup{
       capabilities = capabilities,
+      on_attach = on_attach_callback,
   }
 end
