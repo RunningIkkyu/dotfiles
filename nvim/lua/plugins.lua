@@ -79,6 +79,11 @@ return require('packer').startup(function()
   --use 'kevinhwang91/nvim-hlslens'     --hightlinght search length
   --use 'kdav5758/TrueZen.nvim'         --forcus, minimize
   --use 'wfxr/minimap.vim'              --nvim minimap
+  
+  use {
+      "akinsho/toggleterm.nvim",        -- manage multiple terminal windows
+      config = [[require('config.toggleterm')]],
+  }
   use 'junegunn/vim-easy-align'         --Easy align
   --
   use 'andymass/vim-matchup'            --better matchup
@@ -156,7 +161,10 @@ return require('packer').startup(function()
   use 'edluffy/specs.nvim'            --show cursor position, performance bad
   use 'kosayoda/nvim-lightbulb'       --VSCode bulb for neovim's built-in LSP.
   use 'kyazdani42/nvim-web-devicons'
-  use 'lukas-reineke/indent-blankline.nvim'
+  use {
+      'lukas-reineke/indent-blankline.nvim',
+      config=[[require('config.indent_blankline')]],
+  }
   use 'p00f/nvim-ts-rainbow'          --rainbow
   use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
   use {
