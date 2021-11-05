@@ -25,7 +25,7 @@ return require('packer').startup(function()
        config=[[require('config.lsp_config')]],
   }
   use {
-      'kabouzeid/nvim-lspinstall',      --install language server automatically.
+      'williamboman/nvim-lsp-installer',
       config=[[require('config.lsp_install')]],
   }
   use 'glepnir/lspsaga.nvim'            --better lsp UI
