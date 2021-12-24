@@ -117,6 +117,7 @@ return require('packer').startup(function()
   use 'tversteeg/registers.nvim'        --show nvim register
   use {
     'folke/which-key.nvim',            --show which key
+     config=[[require('config.which_key')]],
   }
   use 'ap/vim-css-color'                --Preview colors
   use 'phaazon/hop.nvim'                --Easy motion for neovim
