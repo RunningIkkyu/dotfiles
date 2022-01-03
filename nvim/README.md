@@ -20,8 +20,10 @@ If you're looking for a portable version of vim which you could use like an IDE,
 
 You need neovim >= 0.6.0 installed.
 
-Just one step to config your nvim.
+Just one step to config your nvim. (If your neovim has been configured, please backup your config and
+remove `$HOME/.config/nvim`.)
 
 ```
+curl -L https://raw.githubusercontent.com/RunningIkkyu/dotfiles/main/nvim/config_nvim.sh | bash
 ```
 
