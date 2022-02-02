@@ -1,7 +1,7 @@
 vim.api.nvim_set_keymap("n", "<localleader>ff", "<cmd>Telescope find_files<cr>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "<localleader>fg", "<cmd>Telescope live_grep<cr>", { silent=true, noremap= true })
-vim.api.nvim_set_keymap("n", "<localleader>fb", "<cmd>Telescope buffers<cr>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "<localleader>fh", "<cmd>Telescope help_tags<cr>", { silent=true, noremap= true })
+vim.api.nvim_set_keymap("n", "<localleader>fc", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { silent=true, noremap= true })
 
 -- lsp releated
 vim.api.nvim_set_keymap("n", "<localleader>gr", "<cmd>Telescope lsp_references<cr>", { silent=true, noremap= true })
