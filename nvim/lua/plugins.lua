@@ -51,7 +51,10 @@ return require('packer').startup(function()
       'ray-x/go.nvim',                --Golang development plugin
       config=[[require("config.go_nvim")]],
   }
-  use 'sbdchd/neoformat'                --✨A (Neo)vim plugin for formatting code.
+  use {
+      use 'sbdchd/neoformat',           --✨A (Neo)vim plugin for formatting code.
+      config=[[require("config.neoformat")]],
+  }
   use {
       'gfanto/fzf-lsp.nvim',            -- Enable the power of fzf fuzzy search for the neovim built in lsp
       disable=true,
