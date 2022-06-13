@@ -17,9 +17,10 @@ return require('packer').startup(function()
       'hrsh7th/nvim-compe',
       config=[[require('config.nvim_compe')]],
   }
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'rafamadriz/friendly-snippets'
-  use 'hrsh7th/vim-vsnip'
+  -- not working aftar nvim 0.5.1
+  -- use 'hrsh7th/vim-vsnip-integ'
+  -- use 'hrsh7th/vim-vsnip'
+  -- use 'rafamadriz/friendly-snippets'
   use {
       'neovim/nvim-lspconfig',
        config=[[require('config.lsp_config')]],
@@ -61,6 +62,11 @@ return require('packer').startup(function()
       disable=true,                     -- Just use telescope
       config=[[require("config.lsp_fuzzy")]],
   }
+  -- use {                                 -- a code outline window
+  --     'stevearc/aerial.nvim',
+  --     config=[[require("config.aerial")]],
+  -- }
+
 
   -- ------------------------- Tools & Improvements -----------------------------
   use 'APZelos/blamer.nvim'             --A git blame plugin for (neo)vim
@@ -78,11 +84,12 @@ return require('packer').startup(function()
   --use 'yuttie/comfortable-motion.vim' --smooth scrolling
   --use 'kevinhwang91/nvim-hlslens'     --hightlinght search length
   --use 'kdav5758/TrueZen.nvim'         --forcus, minimize
-  --use 'wfxr/minimap.vim'              --nvim minimap
+  --   use 'wfxr/minimap.vim'              --nvim minimap
   
   use {
-      "akinsho/toggleterm.nvim",        -- manage multiple terminal windows
-      config = [[require('config.toggleterm')]],
+      "akinsho/toggleterm.nvim",        -- manage multiple terminal windows 
+      tag = 'v1.*', 
+      config = function() require("toggleterm").setup() end
   }
   use 'junegunn/vim-easy-align'         --Easy align
   --
@@ -110,7 +117,7 @@ return require('packer').startup(function()
   }
   use 'junegunn/fzf'
   use 't9md/vim-quickhl'                --quick hightlight works
-  use 'akinsho/nvim-toggleterm.lua'     --controll nvim terminal better.
+  -- use 'akinsho/nvim-toggleterm.lua'     --controll nvim terminal better.
   use 'AndrewRadev/linediff.vim'        --line diff
   use {
       'samoshkin/vim-mergetool',        --vim merge tools
@@ -118,14 +125,18 @@ return require('packer').startup(function()
   }
   use 'chrisbra/NrrwRgn'                --open selected region in a split windows.
   use 'dstein64/nvim-scrollview'        --scrollbar, use nvim popup
-  use 'sindrets/diffview.nvim'          --git diff
+--  use 'sindrets/diffview.nvim'          --git diff
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'tversteeg/registers.nvim'        --show nvim register
   use {
     'folke/which-key.nvim',            --show which key
      config=[[require('config.which_key')]],
   }
   use 'ap/vim-css-color'                --Preview colors
-  use 'phaazon/hop.nvim'                --Easy motion for neovim
+  use {                                 --Easy motion for neovim
+      'phaazon/hop.nvim',                
+      config=[[require('config.hop')]],
+  }
   use 'nacro90/numb.nvim'               --Preview buffer when user :{number}
   use 'godlygeek/tabular'               --Align things quickly--
   use {
@@ -142,6 +153,10 @@ return require('packer').startup(function()
   use 'b0o/mapx.nvim'                   -- A better way to create key mappings in Neovim.
   use 'pierreglaser/folding-nvim'       -- LSP-Powered folding plugin.
 
+  use({
+    "aserowy/tmux.nvim",                -- tmux integration
+    config = [[require('config.tmux_nvim')]], 
+  })
   ------------------------------ Apperance -------------------------------------
   --Colorscheme
   --use 'morhetz/gruvbox'
@@ -155,8 +170,10 @@ return require('packer').startup(function()
   --Others
   --use 'romgrk/barbar.nvim'          --Tabs, as understood by any other editor.
   use {
-      'akinsho/nvim-bufferline.lua',   --top buffer, tabs.
-      config = [[require('config.buffer_line')]],
+      'akinsho/bufferline.nvim', 
+      tag = "v2.*", 
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = [[require('config.buffer_line')]], 
   }
   use 'yamatsum/nvim-cursorline'      --ruler, performance bad
   use 'edluffy/specs.nvim'            --show cursor position, performance bad
@@ -167,7 +184,7 @@ return require('packer').startup(function()
       config=[[require('config.indent_blankline')]],
   }
   use 'p00f/nvim-ts-rainbow'          --rainbow
-  use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
+--  use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
   use {
       'glepnir/galaxyline.nvim',      --statusline.
       config=[[require('config.galaxy_line')]],
