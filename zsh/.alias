@@ -65,3 +65,9 @@ if command -v "watch" &> /dev/null
 then
 	alias wch="watch -n 1 "
 fi
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'

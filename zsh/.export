@@ -12,3 +12,5 @@ then
 fi
 
 
+export PATH=$PATH:"/usr/local/Cellar/protobuf/3.19.4/bin"
+
