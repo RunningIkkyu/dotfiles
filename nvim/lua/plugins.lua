@@ -194,6 +194,15 @@ return require('packer').startup(function()
       config=[[require('config.galaxy_line')]],
   }
   use 'glepnir/dashboard-nvim'        --Startup dashboard
+  -- use {
+  --     'anuvyklack/pretty-fold.nvim',    -- Pretty fold (does not work)
+  --     config = [[require('config.pretty_fold')]],
+  -- }
+  use {
+      'kevinhwang91/nvim-ufo', 
+      requires = 'kevinhwang91/promise-async',
+      config = [[require('config.nvim_ufo')]],
+  }
 end)
 
 
