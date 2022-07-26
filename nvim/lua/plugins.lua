@@ -22,12 +22,13 @@ return require('packer').startup(function()
   -- use 'hrsh7th/vim-vsnip'
   -- use 'rafamadriz/friendly-snippets'
   use {
-      'neovim/nvim-lspconfig',
-       config=[[require('config.lsp_config')]],
-  }
-  use {
       'williamboman/nvim-lsp-installer',
       config=[[require('config.lsp_install')]],
+  }
+  use {
+      'neovim/nvim-lspconfig',
+       after = "nvim-lsp-installer",
+       config=[[require('config.lsp_config')]],
   }
   use 'glepnir/lspsaga.nvim'            --better lsp UI
   use 'folke/lsp-colors.nvim'           --lsp color

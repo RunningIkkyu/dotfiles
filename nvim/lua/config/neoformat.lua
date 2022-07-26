@@ -1,1 +1,1 @@
-vim.api.nvim_exec([[ autocmd BufWritePre *.py :silent! Neoformat black ]], false)
+vim.api.nvim_exec([[ autocmd BufWritePre *.py :Neoformat black ]], false)

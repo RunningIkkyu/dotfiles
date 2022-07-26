@@ -91,6 +91,11 @@ autocmd('misc_aucmds', {
   [[FileType qf set nobuflisted ]],
 }, true)
 
+autocmd('pyformat', {
+    [[ BufWritePre *.py silent! Neoformat black ]]
+}, false)
+
+
 -- Commands
 cmd [[command! WhatHighlight :call util#syntax_stack()]]
 cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]

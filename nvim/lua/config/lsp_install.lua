@@ -38,9 +38,18 @@ lsp_installer.on_server_ready(function(server)
     local opts = {}
 
     -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+    if server.name == "pylsp" then
+
+        opts.settings = {
+            pylsp = {
+                plugins = {
+                    pyflakes = {enabled = false},
+                    pylint = {enabled = false},
+                    flake8 = {enabled = true},
+                },
+            },
+        }
+    end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
