@@ -8,16 +8,15 @@ require'nvim-tree'.setup {
     -- will not open on setup if the filetype is in this list
     ignore_ft_on_setup  = {},
     -- closes neovim automatically when the tree is the last **WINDOW** in the view
-    auto_close          = false,
     -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
     open_on_tab         = false,
     -- hijacks new directory buffers when they are opened.
-    update_to_buf_dir   = {
-        -- enable the feature
-        enable = true,
-        -- allow to open the tree if it was previously closed
-        auto_open = true,
-    },
+    update_focused_file = {
+        enable = false,
+        update_root = false,
+        ignore_list = {},
+      },
+ 
     -- hijack the cursor in the tree to put it at the start of the filename
     hijack_cursor       = false,
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
@@ -40,7 +39,20 @@ require'nvim-tree'.setup {
         -- the command arguments as a list
         args = {}
     },
-
+    actions = {
+        open_file = {
+            quit_on_open = false,
+            resize_window = true,
+            window_picker = {
+                enable = true,
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                exclude = {
+                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                    buftype = { "nofile", "terminal", "help" },
+                },
+            },
+        },
+    },
     view = {
         -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
         width = 30,
@@ -49,7 +61,6 @@ require'nvim-tree'.setup {
         -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
         side = 'left',
         -- if true the tree will resize itself after opening a file
-        auto_resize = false,
         mappings = {
             -- custom only false will merge the list with the default mappings
             -- if true, it will only use your list to set the mappings

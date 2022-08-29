@@ -93,7 +93,7 @@ autocmd('misc_aucmds', {
 
 autocmd('pyformat', {
     [[ BufWritePre *.py silent! Neoformat black ]]
-}, false)
+}, true)
 
 
 -- Commands
@@ -170,7 +170,6 @@ map('v', '//', 'y/\\V<C-R>=escape(@",\'/\\\')<CR><CR>')
 -- " quick add quota to a word.
 -- nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 map('n', '<localleader>"', 'viw<esc>a"<esc>bi"<esc>lel')
-
 -- quick diffget
 map('n', '<localleader>dg', ':diffget<CR>', silent)
 
