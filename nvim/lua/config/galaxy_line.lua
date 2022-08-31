@@ -35,8 +35,8 @@ gls.left[3] = {
 }
 
 gls.left[4] = {
-    FileName = {
-        provider = {"FileName"},
+    FilePath = {
+        provider = {"FilePath"},
         condition = buffer_not_empty,
         highlight = {colors.fg, colors.lightbg},
         separator = " ",
