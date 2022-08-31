@@ -205,9 +205,9 @@ map('n', '<c-j>', '<c-w>j')
 map('n', '<c-k>', '<c-w>k')
 map('n', '<c-l>', '<c-w>l')
 -- Copy relative path to clipboard
-map('n', '<localleader>rp', '<cmd>let @+ = expand("%")<cr>')
+map('n', '<leader>rp', '<cmd>let @+ = expand("%")<cr>')
 -- Copy full path to clipboard
-map('n', '<localleader>fp', '<cmd>let @+ = expand("%:p")<cr>')
+map('n', '<leader>fp', '<cmd>let @+ = expand("%:p")<cr>')
 -- Tab movement
 map('n', '(', '<cmd>tabpre<cr>')
 map('n', ')', '<cmd>tabnext<cr>')
