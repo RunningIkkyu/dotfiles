@@ -187,7 +187,10 @@ return require('packer').startup(function()
       'lukas-reineke/indent-blankline.nvim',
       config=[[require('config.indent_blankline')]],
   }
-  use 'p00f/nvim-ts-rainbow'          --rainbow
+  use {
+      'p00f/nvim-ts-rainbow',          --rainbow
+      config=[[require('config.nvim_ts_rainbow')]],
+  }
 --  use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
   use {
       'glepnir/galaxyline.nvim',      --statusline.
