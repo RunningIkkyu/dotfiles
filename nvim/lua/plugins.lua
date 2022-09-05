@@ -112,7 +112,13 @@ return require('packer').startup(function()
     'karb94/neoscroll.nvim',           --smooth scrolling
       config = [[require('config.neoscroll')]],
   }
-  use 'b3nj5m1n/kommentary'             --Comment text in and out
+--   use 'b3nj5m1n/kommentary'             --Comment text in and out
+  use {
+    'numToStr/Comment.nvim',            -- comment plugin
+    config = function()
+        require('Comment').setup()
+    end
+}
   use 'tpope/vim-surround'              --Vim surrond
   use 'terryma/vim-multiple-cursors'    --Multiple cursor
   use {
