@@ -120,7 +120,7 @@ return require('packer').startup(function()
     end
 }
   use 'tpope/vim-surround'              --Vim surrond
-  use 'terryma/vim-multiple-cursors'    --Multiple cursor
+  --  use 'terryma/vim-multiple-cursors'    --Multiple cursor
   use {
       'junegunn/fzf.vim',
       config = [[require('config.fzf')]],
@@ -155,11 +155,11 @@ return require('packer').startup(function()
   }
   -- use 'kdheepak/lazygit.nvim'           --lazygit intergration. Require: lazygit
   use 'TimUntersberger/neogit'          --magit for neovim
-  use 'kevinhwang91/nvim-bqf'           --Better quickfix window in Neovim
-	use { 																--A better annotation generator
-			"danymat/neogen",
-			requires = "nvim-treesitter/nvim-treesitter"
-	}
+  -- use 'kevinhwang91/nvim-bqf'           --Better quickfix window in Neovim
+  use { 																--A better annotation generator
+      "danymat/neogen",
+      requires = "nvim-treesitter/nvim-treesitter"
+  }
   use 'b0o/mapx.nvim'                   -- A better way to create key mappings in Neovim.
   use 'pierreglaser/folding-nvim'       -- LSP-Powered folding plugin.
 
@@ -186,7 +186,7 @@ return require('packer').startup(function()
       config = [[require('config.buffer_line')]], 
   }
   use 'yamatsum/nvim-cursorline'      --ruler, performance bad
-  use 'edluffy/specs.nvim'            --show cursor position, performance bad
+  -- use 'edluffy/specs.nvim'            --show cursor position, performance bad
   use 'kosayoda/nvim-lightbulb'       --VSCode bulb for neovim's built-in LSP.
   use 'kyazdani42/nvim-web-devicons'
   use {

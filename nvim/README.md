@@ -27,3 +27,19 @@ remove `$HOME/.config/nvim`.)
 curl -L https://raw.githubusercontent.com/RunningIkkyu/dotfiles/main/nvim/config_nvim.sh | bash
 ```
 
+
+# Requirements
+
+
+Langange Server(optional, but highly recommend!):
+
+- pyright (python LSP)
+
+- golsp (golang LSP)
+
+
+Formater(optional):
+
+- black (python)
+
+- jq (json)
