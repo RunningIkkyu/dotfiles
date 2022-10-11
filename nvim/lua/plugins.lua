@@ -92,7 +92,6 @@ return require('packer').startup(function()
   
   use {
       "akinsho/toggleterm.nvim",        -- manage multiple terminal windows 
-      tag = 'v1.*', 
       config = function() require("toggleterm").setup() end
   }
   use 'junegunn/vim-easy-align'         --Easy align
