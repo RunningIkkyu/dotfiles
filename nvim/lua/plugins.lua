@@ -21,13 +21,18 @@ return require('packer').startup(function()
   -- use 'hrsh7th/vim-vsnip-integ'
   -- use 'hrsh7th/vim-vsnip'
   -- use 'rafamadriz/friendly-snippets'
+  -- use {
+  --     'williamboman/nvim-lsp-installer',
+  --     config=[[require('config.lsp_install')]],
+  -- }
   use {
-      'williamboman/nvim-lsp-installer',
-      config=[[require('config.lsp_install')]],
-  }
+    "williamboman/mason.nvim",config=[[require('config.mason')]],
+    }
+  use {
+    "williamboman/mason-lspconfig.nvim",config=[[require('config.mason_lspconfig')]],
+    }
   use {
       'neovim/nvim-lspconfig',
-       after = "nvim-lsp-installer",
        config=[[require('config.lsp_config')]],
   }
   use 'glepnir/lspsaga.nvim'            --better lsp UI

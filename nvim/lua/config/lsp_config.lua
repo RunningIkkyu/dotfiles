@@ -12,6 +12,8 @@ vim.api.nvim_set_keymap("n", "\\e", ":lua vim.lsp.diagnostic.show_line_diagnosti
 vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", { silent=true, noremap= true })
 
+require('lspconfig').gopls.setup{}
+
 require('lspconfig').pylsp.setup{
   on_attach = on_attach,
   flags = {
