@@ -92,7 +92,6 @@ return require('packer').startup(function()
   
   use {
       "akinsho/toggleterm.nvim",        -- manage multiple terminal windows 
-      tag = 'v1.*', 
       config = function() require("toggleterm").setup() end
   }
   use 'junegunn/vim-easy-align'         --Easy align
@@ -194,10 +193,10 @@ return require('packer').startup(function()
       'lukas-reineke/indent-blankline.nvim',
       config=[[require('config.indent_blankline')]],
   }
-  use {
-      'p00f/nvim-ts-rainbow',          --rainbow
-      config=[[require('config.nvim_ts_rainbow')]],
-  }
+--   use {
+--       'p00f/nvim-ts-rainbow',          --rainbow
+--       config=[[require('config.nvim_ts_rainbow')]],
+--   }
 --  use 'xiyaowong/nvim-cursorword'     --Underlines the word under the cursor.
   use {
       'glepnir/galaxyline.nvim',      --statusline.
