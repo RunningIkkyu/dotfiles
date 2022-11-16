@@ -12,8 +12,32 @@ vim.api.nvim_set_keymap("n", "\\e", ":lua vim.lsp.diagnostic.show_line_diagnosti
 vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", { silent=true, noremap= true })
 
-require('lspconfig').gopls.setup{}
 
+require("lspconfig").gopls.setup{
+	on_attach = on_attach,
+	cmd = { "gopls" },
+	settings = {
+		gopls = {
+			analyses = {
+				nilness = true,
+				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
+			},
+			experimentalPostfixCompletions = true,
+			gofumpt = true,
+			staticcheck = true,
+			usePlaceholders = true,
+		},
+	},
+}
+-- require('lspconfig').golangci_lint_ls.setup{}
+require('lspconfig').yamlls.setup{}
+require('lspconfig').quick_lint_js.setup{}
+require('lspconfig').tsserver.setup{}
+require('lspconfig').html.setup{}
+require('lspconfig').vuels.setup{}
+require('lspconfig').pyright.setup{}
 require('lspconfig').pylsp.setup{
   on_attach = on_attach,
   flags = {
