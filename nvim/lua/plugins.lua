@@ -91,9 +91,11 @@ return require('packer').startup(function()
   use 'sheerun/vim-polyglot'
   use 'windwp/nvim-autopairs'
   use 'yuttie/comfortable-motion.vim' --smooth scrolling
-  use 'kevinhwang91/nvim-hlslens'     --hightlinght search length
+  use {'kevinhwang91/nvim-hlslens',     --hightlinght search length
+      config = [[require('config.hlslens')]],
+  }
   use 'kdav5758/TrueZen.nvim'         --forcus, minimize
-     use 'wfxr/minimap.vim'              --nvim minimap
+  --   use 'wfxr/minimap.vim'              --nvim minimap
   
   use {
       "akinsho/toggleterm.nvim",        -- manage multiple terminal windows 
@@ -117,20 +119,20 @@ return require('packer').startup(function()
       config = [[require('config.neoscroll')]],
   }
 --   use 'b3nj5m1n/kommentary'             --Comment text in and out
---  use {
---    'numToStr/Comment.nvim',            -- comment plugin
---    config = function()
---        require('Comment').setup()
---    end
---}
---  use 'tpope/vim-surround'              --Vim surrond
+  use {
+    'numToStr/Comment.nvim',            -- comment plugin
+    config = function()
+        require('Comment').setup()
+    end
+}
+  use 'tpope/vim-surround'              --Vim surrond
   --  use 'terryma/vim-multiple-cursors'    --Multiple cursor
   use {
       'junegunn/fzf.vim',
       config = [[require('config.fzf')]],
   }
   use 'junegunn/fzf'
---  use 't9md/vim-quickhl'                --quick hightlight works
+  use 't9md/vim-quickhl'                --quick hightlight works
   -- use 'akinsho/nvim-toggleterm.lua'     --controll nvim terminal better.
   use 'AndrewRadev/linediff.vim'        --line diff
   use {
