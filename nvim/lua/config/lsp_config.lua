@@ -32,11 +32,11 @@ require("lspconfig").gopls.setup{
 	},
 }
 -- require('lspconfig').golangci_lint_ls.setup{}
-require('lspconfig').yamlls.setup{}
 require('lspconfig').quick_lint_js.setup{}
 require('lspconfig').tsserver.setup{}
 require('lspconfig').html.setup{}
 require('lspconfig').vuels.setup{}
+require('lspconfig').vls.setup{}
 require('lspconfig').pyright.setup{}
 require('lspconfig').pylsp.setup{
   on_attach = on_attach,
