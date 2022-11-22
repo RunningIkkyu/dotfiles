@@ -21,13 +21,18 @@ return require('packer').startup(function()
   -- use 'hrsh7th/vim-vsnip-integ'
   -- use 'hrsh7th/vim-vsnip'
   -- use 'rafamadriz/friendly-snippets'
+  -- use {
+  --     'williamboman/nvim-lsp-installer',
+  --     config=[[require('config.lsp_install')]],
+  -- }
   use {
-      'williamboman/nvim-lsp-installer',
-      config=[[require('config.lsp_install')]],
-  }
+    "williamboman/mason.nvim",config=[[require('config.mason')]],
+    }
+  use {
+    "williamboman/mason-lspconfig.nvim",config=[[require('config.mason_lspconfig')]],
+    }
   use {
       'neovim/nvim-lspconfig',
-       after = "nvim-lsp-installer",
        config=[[require('config.lsp_config')]],
   }
   use 'glepnir/lspsaga.nvim'            --better lsp UI
@@ -79,15 +84,17 @@ return require('packer').startup(function()
       'mbbill/undotree',                --The undo history visualizer for VIM
       config=[[require("config.undo_tree")]],
   }
-  --use 'TaDaa/vimade'                  --fades your inactive buffers..
-  --use 'liuchengxu/vista.vim'          --View and search LSP symbols, tags.
-  --use 'othree/eregex.vim'             --Better regex
-  --use 'preservim/nerdcommenter'       --Quick comment
-  --use 'sheerun/vim-polyglot'
-  --use 'windwp/nvim-autopairs'
-  --use 'yuttie/comfortable-motion.vim' --smooth scrolling
-  --use 'kevinhwang91/nvim-hlslens'     --hightlinght search length
-  --use 'kdav5758/TrueZen.nvim'         --forcus, minimize
+ -- use 'TaDaa/vimade'                  --fades your inactive buffers..
+ -- use 'liuchengxu/vista.vim'          --View and search LSP symbols, tags.
+ -- use 'othree/eregex.vim'             --Better regex
+ -- use 'preservim/nerdcommenter'       --Quick comment
+ -- use 'sheerun/vim-polyglot'
+ -- use 'windwp/nvim-autopairs'
+ -- use 'yuttie/comfortable-motion.vim' --smooth scrolling
+ -- use {'kevinhwang91/nvim-hlslens',     --hightlinght search length
+ --     config = [[require('config.hlslens')]],
+ -- }
+ -- use 'kdav5758/TrueZen.nvim'         --forcus, minimize
   --   use 'wfxr/minimap.vim'              --nvim minimap
   
   use {
