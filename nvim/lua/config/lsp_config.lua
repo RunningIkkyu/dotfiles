@@ -8,11 +8,12 @@ vim.api.nvim_set_keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", { silent=true,
 vim.api.nvim_set_keymap("n", "\\wa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "\\wd", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "\\rn", ":lua vim.lsp.buf.rename()<CR>", { silent=true, noremap= true })
-vim.api.nvim_set_keymap("n", "\\e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { silent=true, noremap= true })
+-- vim.api.nvim_set_keymap("n", "\\e", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { silent=true, noremap= true })
 -- vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", { silent=true, noremap= true })
 -- vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", { silent=true, noremap= true })
 vim.api.nvim_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", { silent=true, noremap= true })
+vim.api.nvim_set_keymap("n", "\\e", ":Lspsaga show_line_diagnostics<CR>", { silent=true, noremap= true })
 
 
 require("lspconfig").gopls.setup{
