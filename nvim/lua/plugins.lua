@@ -35,7 +35,10 @@ return require('packer').startup(function()
       'neovim/nvim-lspconfig',
        config=[[require('config.lsp_config')]],
   }
-  use 'glepnir/lspsaga.nvim'            --better lsp UI
+  use {
+      'glepnir/lspsaga.nvim',            --better lsp UI
+      config=[[require('config.lspsaga')]],
+  }
   use 'folke/lsp-colors.nvim'           --lsp color
   use 'ray-x/lsp_signature.nvim'        --Show function signature
   use {
