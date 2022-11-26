@@ -38,6 +38,10 @@ return require('packer').startup(function()
        config=[[require('config.lsp_config')]],
   }
   use {
+	  "ellisonleao/glow.nvim",
+       config=[[require('config.glow')]],
+  }
+  use {
       'glepnir/lspsaga.nvim',            --better lsp UI
       config=[[require('config.lspsaga')]],
   }
