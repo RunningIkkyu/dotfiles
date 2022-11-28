@@ -1,6 +1,9 @@
 -- dofile('./lua/plugins.lua')
 require('plugins')
 -- require 'impatient'
+-- init.lua
+vim.cmd([[let g:copilot_no_tab_map = v:true]])
+vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("")')
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo

@@ -9,10 +9,10 @@ return require('packer').startup(function()
 
   --  ------------------------- Lsp related --------------------------------------
   --  use 'nvim-lua/completion-nvim'
-  use {
-      'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' ,
-      config=[[require('config.treesitter')]],
-  }
+  -- use {
+  --     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' ,
+  --     config=[[require('config.treesitter')]],
+  -- }
   -- Arcieved repo
   -- use {
   --     'hrsh7th/nvim-compe',
@@ -190,6 +190,15 @@ return require('packer').startup(function()
     "aserowy/tmux.nvim",                -- tmux integration
     config = [[require('config.tmux_nvim')]], 
   })
+  use {
+      "utilyre/barbecue.nvim",
+      requires = {
+        "neovim/nvim-lspconfig",
+        "smiteshp/nvim-navic",
+        "kyazdani42/nvim-web-devicons", -- optional
+      },
+      config = [[require('config.barbecue')]]
+  }
   ------------------------------ Apperance -------------------------------------
   --Colorscheme
   --use 'morhetz/gruvbox'
