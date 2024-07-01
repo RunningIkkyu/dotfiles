@@ -37,6 +37,8 @@
 - Go to next window:          <kbd>Prefix</kbd>, <kbd>)</kbd>
 - Go to previous window:      <kbd>Prefix</kbd>, <kbd>(</kbd>
 - List windows:               <kbd>Prefix</kbd>, <kbd>w</kbd>   (use <kbd>j</kbd>/<kbd>k</kbd> to move, <kbd>x</kbd> to kill windows/tab, <kbd>Enter</kbd> to activate a window.
+- Quick Jump                  <kbd>Prefix</kbd>, <kbd>j</kbd> 
+- Quick Completion            <kbd>Prefix</kbd>, <kbd>Tab</kbd>   (<kbd>Enter</kbd> to insert, <kbd>Tab</kbd> to copy). 
 </pre>
 
 
